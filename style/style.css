@@ -136,6 +136,12 @@ section {
   height: 50%;
 }
 
+@media screen and (max-width: 800px) {
+  .about__twitter {
+    width: 100%;
+  }
+}
+
 .about__image {
   width: 50%;
 }

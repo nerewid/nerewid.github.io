@@ -127,7 +127,11 @@ section {
   }
   &__twitter {
     width: 50%;
-    height: 50%
+    height: 50%;
+    @media screen and (max-width: 800px){
+      width: 100%;
+    }
+
   }
   &__image {
     width: 50%;
