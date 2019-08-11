@@ -67,7 +67,7 @@ section {
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .hero p {
     line-height: 1.5;
   }
@@ -122,6 +122,11 @@ section {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.about__twitter {
+  width: 50%;
+  height: 50%;
 }
 
 .about__image {

@@ -65,7 +65,7 @@ section {
     line-height: 1;
     font-weight: 500;
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       line-height: 1.5;
     }
   }
@@ -118,9 +118,13 @@ section {
     display: flex;
     flex-wrap: wrap;
   }
-
+  &__twitter {
+    width: 50%;
+    height: 50%
+  }
   &__image {
     width: 50%;
+
 
     @media (max-width: 768px) {
       width: 100%;
