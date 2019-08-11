@@ -61,13 +61,20 @@ section {
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 800px) {
+  .hero h1 {
+    font-size: 40px;
+    line-height: 1.5;
+  }
+}
+
 .hero p {
   font-size: 20px;
   line-height: 1;
   font-weight: 500;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .hero p {
     line-height: 1.5;
   }
