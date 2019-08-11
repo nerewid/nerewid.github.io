@@ -58,9 +58,12 @@ section {
     line-height: 1;
     font-weight: 900;
     margin-bottom: 20px;
-    @media screen and (max-width: 480px)  {
-      font-size: 40px;
-      line-height: 1.5;
+
+  }
+  @media screen and (max-width: 800px)  {
+    h1 {
+    font-size: 40px;
+    line-height: 1.5;
     }
   }
 
@@ -69,7 +72,7 @@ section {
     line-height: 1;
     font-weight: 500;
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 800px) {
       line-height: 1.5;
     }
   }
