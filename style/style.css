@@ -63,7 +63,7 @@ section {
 
 @media screen and (max-width: 800px) {
   .hero h1 {
-    font-size: 40px;
+    font-size: 5px;
     line-height: 1.5;
   }
 }
