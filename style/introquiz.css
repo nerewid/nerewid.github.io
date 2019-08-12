@@ -128,6 +128,9 @@ footer small {
   background-color: #cc0000;
   /* バーの背景色(濃い赤色) */
   cursor: pointer;
+  position: absolute;
+  /* ★絶対配置にする */
+  z-index: 5;
 }
 
 .ddmenu li {
@@ -174,6 +177,8 @@ footer small {
   height: 0%;
   display: none;
   /* ★標準では非表示にする */
+  position: absolute;
+  /* ★絶対配置にする */
   z-index: 20;
 }
 

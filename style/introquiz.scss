@@ -137,6 +137,9 @@ footer {
   background-color: #cc0000; /* バーの背景色(濃い赤色) */
   cursor : pointer;
 
+  position: absolute; /* ★絶対配置にする */
+  z-index: 5;
+
   li {
     width: 80px;          /* メニュー項目の横幅(125px) */
     display: inline-block; /* ★横並びに配置する */
@@ -166,7 +169,7 @@ footer {
     padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
     height:  0%;
     display: none;      /* ★標準では非表示にする */
-    //position: absolute; /* ★絶対配置にする */
+    position: absolute; /* ★絶対配置にする */
     z-index: 20;
 
     li {
