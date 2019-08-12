@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>nerewid is babbling</title>
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link rel="stylesheet" href="style/quiz.css">
+  <link rel="stylesheet" href="style/introquiz.css">
   <link rel="stylesheet" href="style/lightbox.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -22,14 +22,68 @@
               第<span class="quiz_no">0</span>問
               <div class="quiz_question"></div>
               <div class="quiz_ans_area">
-                  <ul></ul>
-              </div>
+
+
+            </div>
               <div class="quiz_area_bg"></div>
               <div class="quiz_area_icon"></div>
           </div>
+
           <div class="quiz_result"></div>
       </div>
   </section>
+<ul class="ddmenu">
+        <li>紅魔郷
+           <ul>
+            <li id="6000"><a>赤より紅い夢</a></li>
+            <li id="6001"><a>ほおずきみたいに紅い魂</a></li>
+            <li id="6002"><a>妖魔夜行</a></li>
+            <li id="6003"><a>ルーネイトエルフ</a></li>
+            <li id="6004"><a>おてんば恋娘</a></li>
+            <li id="6005"><a>上海紅茶館　～ Chinese Tea</a></li>
+            <li id="6006"><a>明治十七年の上海アリス</a></li>
+            <li id="6007"><a>ヴワル魔法図書館</a></li>
+            <li id="6008"><a>ラクトガール　～ 少女密室</a></li>
+            <li id="6009"><a>メイドと血の懐中時計</a></li>
+            <li id="6010"><a>月時計　～ ルナ・ダイアル</a></li>
+            <li id="6011"><a>ツェペシュの幼き末裔</a></li>
+            <li id="6012"><a>亡き王女の為のセプテット</a></li>
+            <li id="6013"><a>魔法少女達の百年祭</a></li>
+            <li id="6014"><a>U.N.オーエンは彼女なのか？</a></li>
+            <li id="6015"><a>紅より儚い永遠</a></li>
+            <li id="6016"><a>紅楼　～ Eastern Dream...</a></li>
+           </ul>
+        </li>
+        <li>妖々夢
+                <ul>
+                 <li id="7000"><a>妖々夢　～ Snow or Cherry Petal</a></li>
+                 <li id="7001"><a>無何有の郷　～ Deep Mountain</a></li>
+                 <li id="7002"><a>クリスタライズシルバー</a></li>
+                 <li id="7003"><a>遠野幻想物語</a></li>
+                 <li id="7004"><a>ティアオイエツォン(withered leaf)</a></li>
+                 <li id="7005"><a>ブクレシュティの人形師</a></li>
+                 <li id="7006"><a>人形裁判　～ 人の形弄びし少女</a></li>
+                 <li id="7007"><a>天空の花の都</a></li>
+                 <li id="7008"><a>幽霊楽団　～ Phantom Ensemble</a></li>
+                 <li id="7009"><a>東方妖々夢　～ Ancient Temple</a></li>
+                 <li id="7010"><a>広有射怪鳥事　～ Till When? </a></li>
+                 <li id="7011"><a>アルティメットトゥルース</a></li>
+                 <li id="7012"><a>幽雅に咲かせ、墨染の桜　～ Border of Life</a></li>
+                 <li id="7013"><a>ボーダーオブライフ</a></li>
+                 <li id="7014"><a>妖々跋扈</a></li>
+                 <li id="7015"><a>少女幻葬　～ Necro-Fantasy </a></li>
+                 <li id="7016"><a>妖々跋扈　～ Who done it!</a></li>
+                 <li id="7017"><a>ネクロファンタジア</a></li>
+                 <li id="7018"><a>春風の夢</a></li>
+                 <li id="7019"><a>さくらさくら　～ Japanize Dream...</a></li>
+                </ul>
+
+                </ul>
+
+                </ul>
+             </li>
+
+     </ul>
   <footer>
     <small>&copy; 2019 nerewid</small>
     <a href="./index.html" >TOPに戻る</a>
@@ -44,10 +98,10 @@
           $(this).stop().removeClass('fd-done');
         }
       });
-      var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
+    var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
     var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
     var quiz_cnt = 0; //現在の問題数を管理
-    var quiz_fin_cnt = 6; //何問で終了か設定（クイズ数以下であること）
+    var quiz_fin_cnt = 4; //何問で終了か設定（クイズ数以下であること）
     var quiz_success_cnt = 0; //問題の正解数
 
     //クイズの配列を設定
@@ -55,40 +109,34 @@
     var aryQuiz = [];
     aryQuiz.push(
         {
-            question : 'この中でお菓子曲でないのはどれ？',
-            answer : ['Candy Galy', 'Colorful Cookie', '不沈艦CANDY', 'BITTER CHOCOLATE STRIKER']
+            question : 'ルーミアの曲',
+            answer : ['6002']
+        },
+        {
+            question : 'レミリアの曲',
+            answer : ['6012']
         }
-        ,{
-            question : 'アナスタシアの宝具は次のうちどれ?',
-            answer : ['全体Arts','全体Buster','全体Quick','単体Arts','単体Buster','単体Quick',]
+        ,
+        {
+            question : '紅魔郷スタッフロール',
+            answer : ['6016']
+        },{
+            question : 'アリス・マーガトロイドのテーマ',
+            answer : ['7006']
         }
-        ,{
-            question : '渋沢栄一の出身県は？',
-            answer : ['埼玉県', '東京都', '栃木県', '群馬県']
-        }
-        ,{
-            question : 'この中でSP Difficultの難易度が違う曲はどれ？',
-            answer : ['EGOISM 440', 'Over The “Period”', 'Valkyrie dimension', 'ENDYMION']
-        }
-        ,{
-            question : 'KWHGSHKGTU これって次のうちどれ？',
-            answer : ['俳人', '軍人', '科学者', '政治家','画家']
-        }
-        ,{
-            question : '天空璋のストーリーで最後に登場する季節は何でしょう？',
-            answer : ['冬', '春', '夏', '秋']
-        }
+
     );
 
     quizReset();
 
     //回答を選択した後の処理
-    quizArea.on('click', '.quiz_ans_area ul li', function(){
-        //画面を暗くするボックスを表示（上から重ねて、結果表示中は選択肢のクリックやタップを封じる
-        quizArea.find('.quiz_area_bg').show();
-        //選択した回答に色を付ける
-        $(this).addClass('selected');
-        if($(this).data('true')){
+    $("ul.ddmenu li ul li").click(function(){
+
+        //正解の回答を取得する
+        var success = aryQuiz[quiz_cnt]['answer'][0];
+        console.log(success);
+        console.log($(this).attr("id"));
+        if($(this).attr("id")==success){
             //正解の処理 〇を表示
             quizArea.find('.quiz_area_icon').addClass('true');
             //正解数をカウント
@@ -124,7 +172,7 @@
         quizArea.html(quiz_html); //表示を元に戻す
         quiz_cnt = 0;
         quiz_success_cnt = 0;
-        aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
+        //aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
         quizShow();
     }
 
@@ -134,21 +182,7 @@
         quizArea.find('.quiz_no').text((quiz_cnt + 1));
         //問題文を表示
         quizArea.find('.quiz_question').text(aryQuiz[quiz_cnt]['question']);
-        //正解の回答を取得する
-        var success = aryQuiz[quiz_cnt]['answer'][0];
-        //現在の選択肢表示を削除する
-        quizArea.find('.quiz_ans_area ul').empty();
-        //問題文の選択肢をシャッフルさせる(自作関数) .concat()は参照渡し対策
-        var aryHoge = arrShuffle(aryQuiz[quiz_cnt]['answer'].concat());
-        //問題文の配列を繰り返し表示する
-        $.each(aryHoge, function(key, value){
-            var fuga = '<li>' + value + '</li>';
-            //正解の場合はdata属性を付与する
-            if(success === value){
-                fuga = '<li data-true="1">' + value + '</li>';
-            }
-            quizArea.find('.quiz_ans_area ul').append(fuga);
-        });
+
     }
 
     //結果を表示する関数
@@ -176,6 +210,17 @@
         return arr;
     }
     });
+
+    // ▼マウスが載ったらサブメニューを表示
+    $("ul.ddmenu li").mouseenter(function(){
+         $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
+         $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
+      });
+      // ▼どこかがクリックされたらサブメニューを消す
+      $('html').click(function() {
+         $('ul.ddmenu ul').slideUp(150);
+      });
+
   </script>
 </body>
 
