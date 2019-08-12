@@ -157,8 +157,8 @@ ul.ddmenu a {
       font-weight: bold;         /* 太字にする */
       display: block;            /* ★項目内全域をリンク可能にする */
       position: relative;    /* ★サブメニュー表示の基準位置にする */
-      z-index: -15;
-      transform:translate3d(0,0,-5px);
+      z-index: auto;
+
 }
 
 ul.ddmenu a:hover {
