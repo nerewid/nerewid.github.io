@@ -160,6 +160,9 @@ footer small {
   /* 太字にする */
   display: block;
   /* ★項目内全域をリンク可能にする */
+  position: relative;
+  /* ★サブメニュー表示の基準位置にする */
+  z-index: 10;
 }
 
 .ddmenu a:hover {
@@ -190,6 +193,9 @@ footer small {
   /* 項目上側の枠線(ピンク色で1pxの実線) */
   font-size: 70%;
   font-weight: normal;
+  position: relative;
+  /* ★サブメニュー表示の基準位置にする */
+  z-index: 20;
 }
 
 .ddmenu ul li a {
@@ -201,6 +207,8 @@ footer small {
   /* 文字列前方の余白(5px) */
   font-weight: normal;
   /* 太字にはしない */
+  position: relative;
+  /* ★サブメニュー表示の基準位置にする */
   z-index: 20;
 }
 
@@ -209,23 +217,6 @@ footer small {
   /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
   color: #005500;
   /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
-}
-
-.ddmenu ul ul {
-  margin: 0px;
-  /* ★サブメニュー外側の余白(ゼロ) */
-  padding: 0px;
-  /* ★サブメニュー内側の余白(ゼロ) */
-  display: none;
-  /* ★標準では非表示にする */
-  position: absolute;
-  /* ★絶対配置にする */
-  top: -1px;
-  /* 1pxだけ上方向にずらす(※上に1pxの枠線を引いている場合) */
-  left: 100%;
-  /* ★基準位置からの距離を親ボックスの幅100％にする */
-  border-left: 1px solid pink;
-  /* 左側に引く枠線(ピンク色で1pxの実線) */
 }
 
 .quiz_area {
