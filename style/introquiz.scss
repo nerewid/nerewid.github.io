@@ -152,6 +152,7 @@ footer {
     text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
     font-weight: bold;         /* 太字にする */
     display: block;            /* ★項目内全域をリンク可能にする */
+    z-index: 10;
 
     &:hover {
       background-color: #ffdddd; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
@@ -178,6 +179,7 @@ footer {
         text-align: left;    /* 文字列の配置(左寄せ) */
         padding-left: 5px;   /* 文字列前方の余白(5px) */
         font-weight: normal; /* 太字にはしない */
+        z-index: 20;
       }
       &:hover {
           background-color: #ffff80; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */

@@ -156,6 +156,7 @@ footer small {
   /* 太字にする */
   display: block;
   /* ★項目内全域をリンク可能にする */
+  z-index: 10;
 }
 
 .ddmenu a:hover {
@@ -196,6 +197,7 @@ footer small {
   /* 文字列前方の余白(5px) */
   font-weight: normal;
   /* 太字にはしない */
+  z-index: 20;
 }
 
 .ddmenu ul li:hover {
