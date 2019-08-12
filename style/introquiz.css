@@ -162,7 +162,9 @@ ul.ddmenu a {
   /* ★項目内全域をリンク可能にする */
   position: relative;
   /* ★サブメニュー表示の基準位置にする */
-  z-index: 15;
+  z-index: -15;
+  -webkit-transform: translate3d(0, 0, -5px);
+          transform: translate3d(0, 0, -5px);
 }
 
 ul.ddmenu a:hover {
@@ -208,8 +210,8 @@ ul.ddmenu ul li a {
   position: relative;
   /* ★絶対配置にする */
   z-index: 20;
-  -webkit-transform: translate3d(0, 0, 5);
-          transform: translate3d(0, 0, 5);
+  -webkit-transform: translate3d(0, 0, 5px);
+          transform: translate3d(0, 0, 5px);
 }
 
 ul.ddmenu ul li a:hover {

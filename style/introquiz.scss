@@ -157,7 +157,8 @@ ul.ddmenu a {
       font-weight: bold;         /* 太字にする */
       display: block;            /* ★項目内全域をリンク可能にする */
       position: relative;    /* ★サブメニュー表示の基準位置にする */
-      z-index: 15;
+      z-index: -15;
+      transform:translate3d(0,0,-5px);
 }
 
 ul.ddmenu a:hover {
@@ -188,7 +189,7 @@ ul.ddmenu ul li a{
           font-weight: normal; /* 太字にはしない */
           position: relative; /* ★絶対配置にする */
           z-index: 20;
-          transform:translate3d(0,0,5);
+          transform:translate3d(0,0,5px);
 }
 ul.ddmenu ul li a:hover {
             background-color: #ffff80; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
