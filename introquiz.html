@@ -24,12 +24,13 @@
 
               <div class="quiz_question">
                     <form id="setting">
-                            <label for="max">出題数を決めて下さい (現在、全部で 37 問) : </label>
-                            <input class="form" type="number" id="max" min="1" max="37" value="10"><br>
+                            <label for="max">出題数を決めて下さい (現在、全部で 58 問) : </label>
+                            <input class="form" type="number" id="max" min="1" max="58" value="10"><br>
                             <p><h3>難易度選択<h3>
-                            <input name="difficulty" type="radio" name="q2" value="1.0" checked> Easy
-                            <input name="difficulty" type="radio" name="q2" value="0.5"> Normal
-                            <input name="difficulty" type="radio" name="q2" value="0.3"> Hard
+                            <input name="difficulty" type="radio"  value="1.0" checked> Easy
+                            <input name="difficulty" type="radio"  value="0.5"> Normal
+                            <input name="difficulty" type="radio"  value="0.3"> Hard
+                            <input name="difficulty" type="radio"  value="0.1"> Lunatic
                             </p>
                             <button class="send" id="button">決定</button>
                         </form>
@@ -94,26 +95,27 @@
         </li>
         <li><a>永夜抄</a>
             <ul>
-            <li id="7000"><a>妖々夢　～ Snow or Cherry Petal</a></li>
-            <li id="7001"><a>無何有の郷　～ Deep Mountain</a></li>
-            <li id="7002"><a>クリスタライズシルバー</a></li>
-            <li id="7003"><a>遠野幻想物語</a></li>
-            <li id="7004"><a>ティアオイエツォン(withered leaf)</a></li>
-            <li id="7005"><a>ブクレシュティの人形師</a></li>
-            <li id="7006"><a>人形裁判　～ 人の形弄びし少女</a></li>
-            <li id="7007"><a>天空の花の都</a></li>
-            <li id="7008"><a>幽霊楽団　～ Phantom Ensemble</a></li>
-            <li id="7009"><a>東方妖々夢　～ Ancient Temple</a></li>
-            <li id="7010"><a>広有射怪鳥事　～ Till When? </a></li>
-            <li id="7011"><a>アルティメットトゥルース</a></li>
-            <li id="7012"><a>幽雅に咲かせ、墨染の桜　～ Border of Life</a></li>
-            <li id="7013"><a>ボーダーオブライフ</a></li>
-            <li id="7014"><a>妖々跋扈</a></li>
-            <li id="7015"><a>少女幻葬　～ Necro-Fantasy </a></li>
-            <li id="7016"><a>妖々跋扈　～ Who done it!</a></li>
-            <li id="7017"><a>ネクロファンタジア</a></li>
-            <li id="7018"><a>春風の夢</a></li>
-            <li id="7019"><a>さくらさくら　～ Japanize Dream...</a></li>
+            <li id="8000"><a>永夜抄　～ Eastern Night.</a></li>
+            <li id="8001"><a>幻視の夜　～ Ghostly Eyes</a></li>
+            <li id="8002"><a>蠢々秋月　～ Mooned Insect</a></li>
+            <li id="8003"><a>夜雀の歌声　～ Night Bird</a></li>
+            <li id="8004"><a>もう歌しか聞こえない</a></li>
+            <li id="8005"><a>懐かしき東方の血　～ Old World </a></li>
+            <li id="8006"><a>プレインエイジア</a></li>
+            <li id="8007"><a>永夜の報い　～ Imperishable Night.</a></li>
+            <li id="8008"><a>少女綺想曲　～ Dream Battle</a></li>
+            <li id="8009"><a>恋色マスタースパーク</a></li>
+            <li id="8010"><a>シンデレラケージ　～ Kagome-Kagome </a></li>
+            <li id="8011"><a>狂気の瞳　～ Invisible Full Moon</a></li>
+            <li id="8012"><a>ヴォヤージュ1969</a></li>
+            <li id="8013"><a>千年幻想郷　～ History of the Moon</a></li>
+            <li id="8014"><a>竹取飛翔　～ Lunatic Princess</a></li>
+            <li id="8015"><a>ヴォヤージュ1970</a></li>
+            <li id="8016"><a>エクステンドアッシュ　～ 蓬莱人</a></li>
+            <li id="8017"><a>月まで届け、不死の煙</a></li>
+            <li id="8018"><a>月見草</a></li>
+            <li id="8019"><a>Eternal Dream　～ 幽玄の槭樹</a></li>
+            <li id="8020"><a>東方妖怪小町</a></li>
             </ul>
         </li>
 
@@ -244,11 +246,23 @@
     //結果を表示する関数
     function quizResult(){
         quizArea.find('.quiz_set').hide();
-        $text = quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！';
+        var diff_name;
+        if(difficulty==1.0){
+            diff_name="Easy";
+        }else if(difficulty==0.5){
+            diff_name="Normal";
+        }else if(difficulty==0.3){
+            diff_name="Hard";
+        }else if(difficulty==0.1){
+            diff_name="Lunatic";
+        }
+
+
+        $text = '難易度'+diff_name+'で '+quiz_fin_cnt + '問中 ' + quiz_success_cnt + '問正解！';
         if(quiz_fin_cnt === quiz_success_cnt){
             $text += '<br>全問正解おめでとう！';
         }
-        $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズ（仮）に挑戦しました！\n'+quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
+        $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズ（仮）に挑戦しました！\n'+'難易度'+diff_name+'で '+quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
 
 
         $text += '<br><input type="button" value="もう一度挑戦する" class="quiz_restart">';
