@@ -208,6 +208,8 @@ ul.ddmenu ul li a {
   position: relative;
   /* ★絶対配置にする */
   z-index: 20;
+  -webkit-transform: translate3d(0, 0, 5);
+          transform: translate3d(0, 0, 5);
 }
 
 ul.ddmenu ul li a:hover {
