@@ -18,12 +18,17 @@
 <body>
 
 <section class="hero fd-in" id="hero">
-        <h2>東方イントロクイズ（仮）(紅妖だけ ランダムに10問)</h2>
+        <h2>東方イントロクイズ（仮）</h2>
     <div class="quiz_area">
           <div class="quiz_set">
 
               <div class="quiz_question">
+                    <form>
+                            <label for="max">出題数を決めて下さい (現在、全部で 37 問) : </label>
+                            <input class="form" type="number" id="max" min="1" max="37" value="10">
 
+                            <button class="send" id="button">決定</button>
+                        </form>
               </div>
               <div class="quiz_area_bg"></div>
               <div class="quiz_area_icon"></div>
@@ -124,11 +129,15 @@
           $(this).stop().removeClass('fd-done');
         }
       });
+
+
+
     var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
     var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
     var quiz_cnt = 0; //現在の問題数を管理
     var quiz_fin_cnt = 2; //何問で終了か設定（クイズ数以下であること）
     var quiz_success_cnt = 0; //問題の正解数
+    var quiz_max=37;
 
     //クイズの配列を設定
     //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
@@ -144,7 +153,21 @@
         {answer : ['7'+a]});
     }
 
-    quizReset();
+
+    // ボタンの要素を取得
+    var button = document.getElementById("button");
+     // ボタンをクリックした時の処理
+    button.addEventListener("click", function(e) {
+        e.preventDefault();
+        // 2つの入力フォームの値を取得
+        var max = document.getElementById("max").value;
+        quiz_fin_cnt = parseInt(max, 10);
+        if (quiz_max<quiz_fin_cnt) {
+            quiz_fin_cnt = quiz_max
+        }
+        quizReset();
+    });
+
 
     //回答を選択した後の処理
     $("ul.ddmenu li ul li").click(function(){
@@ -199,7 +222,7 @@
         //問題文を表示
         //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
         var ans_id = aryQuiz[quiz_cnt]['answer'][0]
-        quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 <br><audio src="mp3/'+ans_id+'.mp3" controls> </audio>');
+        quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 (全'+quiz_fin_cnt+'問) <br><audio src="mp3/'+ans_id+'.mp3" controls> </audio>');
 
     }
 

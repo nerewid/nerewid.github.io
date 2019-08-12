@@ -263,7 +263,7 @@ footer {
 }
 }
 
-.quiz_restart {
+.quiz_restart,.send {
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
@@ -277,4 +277,9 @@ footer {
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
   }
+}
+
+.form{
+  border: 1px solid #999;
+  border-color: skyblue;
 }
