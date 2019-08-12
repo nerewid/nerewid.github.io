@@ -1,0 +1,446 @@
+
+.about, .point, .gallery, .price, .cta {
+    padding: 100px 20%;
+  }
+
+  @media (max-width: 1280px) {
+    .about, .point, .gallery, .price, .cta {
+      padding: 80px 10%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about, .point, .gallery, .price, .cta {
+      padding: 80px 5%;
+    }
+  }
+
+  html,
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .fd-in {
+    opacity: 0;
+    transform: translate(0, 60px);
+    -webkit-transform: translate(0, 60px);
+  }
+
+  .fd-done {
+    opacity: 1.0;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+  }
+
+  section {
+    overflow: hidden;
+    -webkit-transition: .8s;
+    transition: .8s;
+  }
+
+  .section__title {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .section__title--discription {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .hero {
+    padding: 180px 10% 200px;
+    background-image: linear-gradient(-45deg, #74ebd5 0%, #ACB6E5 100%);
+    color: #fff;
+  }
+
+  .hero h1 {
+    font-size: 80px;
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 800px) {
+    .hero h1 {
+      font-size: 40px;
+      line-height: 1.5;
+    }
+  }
+
+  .hero p {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 800px) {
+    .hero p {
+      line-height: 1.5;
+    }
+  }
+
+  .hero a {
+    display: inline-block;
+    background: #fff;
+    padding: 15px 40px 15px 20px;
+    margin: 40px 0 0;
+    font-size: 18px;
+    font-weight: 900;
+    color: #FF6B95;
+    text-decoration: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+    border: 2px solid #fff;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .hero a {
+      display: block;
+    }
+  }
+
+  .hero a::after {
+    position: absolute;
+    content: "";
+    right: 20px;
+    width: 8px;
+    height: 8px;
+    top: calc(50% - 4px);
+    border-top: 2px solid #FF6B95;
+    border-right: 2px solid #FF6B95;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .hero a:hover {
+    background: #FF6B95;
+    color: #fff;
+  }
+
+  .hero a:hover::after {
+    border-color: #fff;
+  }
+
+  .about__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .about__twitter {
+    width: 50%;
+    height: 50%;
+  }
+
+  @media screen and (max-width: 800px) {
+    .about__twitter {
+      width: 100%;
+    }
+  }
+
+  .about__image {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .about__image {
+      width: 100%;
+    }
+  }
+
+  .about__image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about__text {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .about__text {
+      width: 100%;
+    }
+  }
+
+  .about__text p {
+    line-height: 2;
+    margin-left: 50px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .about__text p {
+      margin: 20px 0 0;
+    }
+  }
+
+  .point {
+    background: #f7f7f7;
+  }
+
+  .point__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    list-style-type: none;
+  }
+
+  .point__item {
+    text-align: center;
+    width: calc((100% / 3) - 14px);
+  }
+
+  .point__item:not(:first-child) {
+    margin-left: 21px;
+  }
+
+  @media (max-width: 768px) {
+    .point__item {
+      width: 100%;
+    }
+    .point__item:not(:first-child) {
+      margin: 30px 0 0;
+    }
+  }
+
+  .point__item i {
+    font-size: 44px;
+    font-weight: 900;
+    width: 50px;
+    border-bottom: 4px solid #000;
+    display: inline-block;
+    text-align: center;
+    padding: 0 0 8px;
+    margin: 0 0 20px;
+  }
+
+  .point__item p {
+    text-align: left;
+    font-size: 18px;
+  }
+
+  .gallery__list {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .gallery__item {
+    width: calc(50% - 10px);
+  }
+
+  .gallery__item:not(:nth-child(-n+2)) {
+    margin-top: 20px;
+  }
+
+  .gallery__item:nth-child(2n) {
+    margin-left: 20px;
+  }
+
+  .gallery__item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .gallery__item a {
+    -webkit-transition: .5s;
+    transition: .5s;
+  }
+
+  .gallery__item a:hover {
+    opacity: .7;
+  }
+
+  .gallery__item a:hover img {
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .cta__btn {
+    text-align: center;
+  }
+
+  .cta__btn a {
+    display: inline-block;
+    background: #FF6B95;
+    padding: 15px 40px 15px 20px;
+    margin: 0px 0 0;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+    border: 2px solid #fff;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .cta__btn a {
+      display: block;
+    }
+  }
+
+  .cta__btn a::after {
+    position: absolute;
+    content: "";
+    right: 20px;
+    width: 8px;
+    height: 8px;
+    top: calc(50% - 4px);
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .cta__btn a:hover {
+    border-color: #FF6B95;
+    background: #fff;
+    color: #FF6B95;
+  }
+
+  .cta__btn a:hover::after {
+    border-color: #FF6B95;
+  }
+
+  footer {
+    padding: 15px 0;
+    background: #444;
+    text-align: center;
+    color: #fff;
+  }
+
+  footer small {
+    font-size: 14px;
+    line-height: 1;
+  }
+/*# sourceMappingURL=style.css.map */
+
+/* クイズのすべてを管理する親要素 */
+.quiz_area{
+    position: relative;
+}
+
+/* 回答後に上に被せてタップできなくするための要素（デフォルト非表示、回答後に一時的に表示） */
+.quiz_area .quiz_area_bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    color: #FFF;
+    text-align: center;
+}
+
+/* 画面に〇、×を表示するための要素（デフォルト非表示、回答後に一時的に表示） */
+.quiz_area .quiz_area_icon{
+    position: absolute;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    color: red;
+    display: none;
+    font-size: 10em;
+    font-weight: bold;
+    -webkit-text-stroke: 4px #FFF;
+    text-stroke: 4px #FFF;
+}
+
+/* .trueまたは.falseのクラスが付与されたら表示するものとみなす */
+.quiz_area .quiz_area_icon.true, .quiz_area .quiz_area_icon.false{
+    display: block;
+}
+
+/* .trueは正解（〇を表示） */
+.quiz_area .quiz_area_icon.true:before{
+    content: '〇';
+    color: red;
+}
+/* .falseは不正解（×を表示） */
+.quiz_area .quiz_area_icon.false:before{
+    content: '×';
+    color: blue;
+}
+
+/* 現在の問題数を表示 */
+.quiz_area .quiz_no{
+    font-weight: bold;
+}
+
+/* 問題文と回答後の結果（デザインは使いまわし） */
+.quiz_area .quiz_question, .quiz_result{
+    box-sizing: border-box;
+    padding: 15px;
+    border: 4px solid #CCC;
+    font-weight: bold;
+    color: #000;
+    background-color: #FFF;
+}
+
+/* 回答後の結果は初期非表示 */
+.quiz_area .quiz_result{
+    display: none;
+    text-align: center;
+}
+
+
+/* 以下クイズの選択肢のデザイン */
+.quiz_area .quiz_ans_area ul{
+    margin: 10px 0 0 0;
+    padding: 0;
+    display: block;
+}
+
+.quiz_area .quiz_ans_area ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.quiz_area .quiz_ans_area ul li{
+    box-sizing: border-box;
+    list-style: none;
+    float: left;
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #CCC;
+    margin: 0 0 -2px 0;
+    cursor: pointer;
+    color: #000;
+    background-color: #FFF;
+}
+
+.quiz_restart {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+  }
+  .quiz_restart:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
