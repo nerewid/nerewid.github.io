@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>nerewid is babbling</title>
+  <title>東方イントロクイズ（仮）</title>
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
   <link rel="stylesheet" href="style/introquiz.css">
   <link rel="stylesheet" href="style/lightbox.css">
@@ -16,7 +16,9 @@
 </head>
 
 <body>
+
   <section class="hero fd-in" id="hero">
+        <h2>東方イントロクイズ（仮）</h2>
       <div class="quiz_area">
           <div class="quiz_set">
               第<span class="quiz_no">0</span>問
@@ -101,31 +103,22 @@
     var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
     var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
     var quiz_cnt = 0; //現在の問題数を管理
-    var quiz_fin_cnt = 4; //何問で終了か設定（クイズ数以下であること）
+    var quiz_fin_cnt = 10; //何問で終了か設定（クイズ数以下であること）
     var quiz_success_cnt = 0; //問題の正解数
 
     //クイズの配列を設定
     //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
     var aryQuiz = [];
-    aryQuiz.push(
-        {
-            question : 'ルーミアの曲',
-            answer : ['6002']
-        },
-        {
-            question : 'レミリアの曲',
-            answer : ['6012']
-        }
-        ,
-        {
-            question : '紅魔郷スタッフロール',
-            answer : ['6016']
-        },{
-            question : 'アリス・マーガトロイドのテーマ',
-            answer : ['7006']
-        }
-
-    );
+    for (let index = 0; index < 17; index++) {
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['6'+a]});
+    }
+    for (let index = 0; index < 20; index++) {
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['7'+a]});
+    }
 
     quizReset();
 
@@ -134,8 +127,8 @@
 
         //正解の回答を取得する
         var success = aryQuiz[quiz_cnt]['answer'][0];
-        console.log(success);
-        console.log($(this).attr("id"));
+        //console.log(success);
+        //console.log($(this).attr("id"));
         if($(this).attr("id")==success){
             //正解の処理 〇を表示
             quizArea.find('.quiz_area_icon').addClass('true');
@@ -172,7 +165,7 @@
         quizArea.html(quiz_html); //表示を元に戻す
         quiz_cnt = 0;
         quiz_success_cnt = 0;
-        //aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
+        aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
         quizShow();
     }
 
@@ -181,7 +174,9 @@
         //何問目かを表示
         quizArea.find('.quiz_no').text((quiz_cnt + 1));
         //問題文を表示
-        quizArea.find('.quiz_question').text(aryQuiz[quiz_cnt]['question']);
+        //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
+        var ans_id = aryQuiz[quiz_cnt]['answer'][0]
+        quizArea.find('.quiz_question').html('<audio src="mp3/'+ans_id+'.mp3" controls> </audio>');
 
     }
 
