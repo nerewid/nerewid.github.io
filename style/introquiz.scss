@@ -157,7 +157,7 @@ footer {
     font-weight: bold;         /* 太字にする */
     display: block;            /* ★項目内全域をリンク可能にする */
     position: relative;    /* ★サブメニュー表示の基準位置にする */
-    z-index: 10;
+    z-index: 15;
 
     &:hover {
       background-color: #ffdddd; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
