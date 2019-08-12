@@ -139,6 +139,7 @@ footer small {
   /* ★リストの先頭記号を消す */
   position: relative;
   /* ★サブメニュー表示の基準位置にする */
+  z-index: 10;
 }
 
 .ddmenu a {
@@ -156,7 +157,6 @@ footer small {
   /* 太字にする */
   display: block;
   /* ★項目内全域をリンク可能にする */
-  z-index: 10;
 }
 
 .ddmenu a:hover {
@@ -176,6 +176,7 @@ footer small {
   /* ★標準では非表示にする */
   position: absolute;
   /* ★絶対配置にする */
+  z-index: 20;
 }
 
 .ddmenu ul li {
