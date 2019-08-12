@@ -219,6 +219,7 @@
     var quiz_success_cnt = 0; //問題の正解数
     var quiz_max=37;
     var difficulty;
+    var lock=1;
 
     //クイズの配列を設定
     //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
@@ -261,11 +262,13 @@
             quiz_fin_cnt = quiz_max
         }
         quizReset();
+        lock=0;
     });
 
 
     //回答を選択した後の処理
     $("ul.ddmenu li ul li").click(function(){
+        if(lock!=1){
         quizArea.find('.quiz_area_bg').show();
         //正解の回答を取得する
         var success = aryQuiz[quiz_cnt]['answer'][0];
@@ -295,6 +298,7 @@
                 quizResult();
             }
         }, 1500);
+        }
     });
 
     //もう一度挑戦するを押した時の処理
@@ -363,7 +367,6 @@
 
     // ▼マウスが載ったらサブメニューを表示
     $("ul.ddmenu li").click(function(){
-        console.log("peu")
     //$("ul.ddmenu li").mouseenter(function(){
          $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
          $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
