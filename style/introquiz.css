@@ -130,7 +130,7 @@ ul.ddmenu {
   cursor: pointer;
   position: absolute;
   /* ★絶対配置にする */
-  z-index: 5;
+  z-index: auto;
 }
 
 ul.ddmenu li {
@@ -142,7 +142,7 @@ ul.ddmenu li {
   /* ★リストの先頭記号を消す */
   position: relative;
   /* ★サブメニュー表示の基準位置にする */
-  z-index: 10;
+  z-index: auto;
 }
 
 ul.ddmenu a {
