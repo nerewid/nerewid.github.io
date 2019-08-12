@@ -1,0 +1,264 @@
+$bg-gray: #f7f7f7;
+$bg-footer: #444;
+
+%section-padding {
+  padding: 100px 20%;
+
+  @media (max-width: 1280px) {
+    padding: 80px 10%;
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 5%;
+  }
+}
+
+html,
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.fd-in {
+  opacity: 0;
+  transform: translate(0, 60px);
+  -webkit-transform: translate(0, 60px);
+}
+
+.fd-done {
+  opacity: 1.0;
+  transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+}
+
+section {
+  overflow: hidden;
+  transition: .8s;
+}
+
+.section {
+  &__title {
+    font-size: 48px;
+    text-align: center;
+
+    &--discription {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.hero {
+  padding: 40px 10% 30px;
+  background-image: linear-gradient(-45deg, #74ebd5 0%, #ACB6E5 100%);
+  color: #fff;
+
+  h1 {
+    font-size: 80px;
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 20px;
+
+  }
+  @media screen and (max-width: 800px)  {
+    h1 {
+    font-size: 40px;
+    line-height: 1.5;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+
+    @media screen and (max-width: 800px) {
+      line-height: 1.5;
+    }
+  }
+
+  a {
+    display: inline-block;
+    background: #fff;
+    padding: 15px 40px 15px 20px;
+    margin: 40px 0 0;
+    font-size: 18px;
+    font-weight: 900;
+    color: #FF6B95;
+    text-decoration: none;
+    transition: .5s;
+    border: 2px solid #fff;
+    position: relative;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      right: 20px;
+      width: 8px;
+      height: 8px;
+      top: calc(50% - 4px);
+      border-top: 2px solid #FF6B95;
+      border-right: 2px solid #FF6B95;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      background: #FF6B95;
+      color: #fff;
+
+      &::after {
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+footer {
+  padding: 15px 0;
+  background: $bg-footer;
+  text-align: center;
+  color: #fff;
+
+  small {
+    font-size: 14px;
+    line-height: 1;
+  }
+}
+
+.ddmenu {
+
+  margin: 0px;               /* メニューバー外側の余白(ゼロ) */
+  padding: 0px 0px 0px 15px; /* メニューバー内側の余白(左に15px) */
+  background-color: #cc0000; /* バーの背景色(濃い赤色) */
+  cursor : pointer;
+
+  li {
+    width: 80px;          /* メニュー項目の横幅(125px) */
+    display: inline-block; /* ★横並びに配置する */
+    list-style-type: none; /* ★リストの先頭記号を消す */
+    position: relative;    /* ★サブメニュー表示の基準位置にする */
+  }
+
+  a {
+    background-color: #cc0000; /* メニュー項目の背景色(濃い赤色) */
+    color: white;              /* メニュー項目の文字色(白色) */
+    line-height: 30px;         /* メニュー項目のリンクの高さ(40px) */
+    text-align: center;        /* メインメニューの文字列の配置(中央寄せ) */
+    text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
+    font-weight: bold;         /* 太字にする */
+    display: block;            /* ★項目内全域をリンク可能にする */
+
+    &:hover {
+      background-color: #ffdddd; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
+      color: #dd0000;            /* メニュー項目にマウスが載ったときの文字色(濃い赤色) */
+    }
+  }
+
+  ul {
+    margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+    padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+    height:  0%;
+    display: none;      /* ★標準では非表示にする */
+    position: absolute; /* ★絶対配置にする */
+
+    li {
+      width: 350%;
+      height: 0%;               /* サブメニュー1項目の横幅(135px) */
+      border-top: 1px solid pink; /* 項目上側の枠線(ピンク色で1pxの実線) */
+      font-size: 70%;
+      font-weight: normal;
+
+      a {
+        line-height: 25px;   /* サブメニュー1項目の高さ(35px) */
+        text-align: left;    /* 文字列の配置(左寄せ) */
+        padding-left: 5px;   /* 文字列前方の余白(5px) */
+        font-weight: normal; /* 太字にはしない */
+      }
+      &:hover {
+          background-color: #ffff80; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+          color: #005500;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+        }
+    }
+
+    ul {
+      margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+      padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+      display: none;      /* ★標準では非表示にする */
+      position: absolute; /* ★絶対配置にする */
+      top: -1px;          /* 1pxだけ上方向にずらす(※上に1pxの枠線を引いている場合) */
+      left: 100%;         /* ★基準位置からの距離を親ボックスの幅100％にする */
+      border-left: 1px solid pink; /* 左側に引く枠線(ピンク色で1pxの実線) */
+    }
+  }
+}
+
+.quiz_area{
+  position: relative;
+
+  .quiz_area_bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    color: #FFF;
+    text-align: center;
+  }
+  .quiz_area_icon{
+    position: absolute;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    color: red;
+    display: none;
+    font-size: 10em;
+    font-weight: bold;
+    -webkit-text-stroke: 4px #FFF;
+    text-stroke: 4px #FFF;
+
+    &.true{
+      display: block;
+      &:before{
+        /* .trueは正解（〇を表示） */
+        content: '〇';
+        color: red;
+      }
+    }
+
+    &.false{
+      display: block;
+      &:before{
+        /* .falseは不正解（×を表示） */
+        content: '×';
+        color: blue;
+      }
+    }
+  }
+  /* 現在の問題数を表示 */
+  .quiz_no{
+  font-weight: bold;
+  }
+  .quiz_question, .quiz_result{
+    box-sizing: border-box;
+    padding: 15px;
+    border: 4px solid #CCC;
+    font-weight: bold;
+    color: #000;
+    background-color: #FFF;
+  }
+  .quiz_result{
+    display: none;
+    text-align: center;
+}
+}
