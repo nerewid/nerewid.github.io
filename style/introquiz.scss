@@ -172,6 +172,7 @@ footer {
     display: none;      /* ★標準では非表示にする */
     position: absolute; /* ★絶対配置にする */
     z-index: 20;
+    transform:translate3d(0,0,0);
 
     li {
       width: 350%;

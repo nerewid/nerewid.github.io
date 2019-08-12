@@ -183,6 +183,8 @@ footer small {
   position: absolute;
   /* ★絶対配置にする */
   z-index: 20;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .ddmenu ul li {
