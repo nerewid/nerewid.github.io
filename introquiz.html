@@ -24,8 +24,8 @@
 
               <div class="quiz_question">
                     <form id="setting">
-                            <label for="max">出題数を決めて下さい (現在、全部で 77 問) : </label>
-                            <input class="form" type="number" id="max" min="1" max="77" value="10"><br>
+                            <label for="max">出題数を決めて下さい (現在、全部で 95 問) : </label>
+                            <input class="form" type="number" id="max" min="1" max="95" value="10"><br>
                             <p><h3>難易度選択<h3>
                             <input name="difficulty" type="radio"  value="1.0" checked> Easy
                             <input name="difficulty" type="radio"  value="0.5"> Normal
@@ -214,6 +214,11 @@
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['9'+a]});
+    }
+    for (let index = 0; index < 18; index++) {
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['10'+a]});
     }
 
 
