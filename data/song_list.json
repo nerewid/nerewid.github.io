@@ -1,0 +1,47 @@
+{"alldata":[
+    [
+        {
+        "game_display_name":"紅魔郷",
+        "songs":[
+            {
+            "name" : "赤より紅い夢",
+            "game" : "紅魔郷",
+            "id"   : "6000"
+        },
+        {
+            "name" : "ほおずきみたいに紅い魂",
+            "game" : "紅魔郷",
+            "id"   : "6001"
+        },
+        {
+            "name" : "妖魔夜行",
+            "game" : "紅魔郷",
+            "id"   : "6002"
+        }
+        ]
+
+        }
+    ],
+    [
+        {
+        "game_display_name": "妖々夢",
+        "songs":[
+            {
+                "name" : "妖々夢　～ Snow or Cherry Petal",
+                "game" : "妖々夢",
+                "id"   : "7000"
+            },
+            {
+                "name" : "無何有の郷　～ Deep Mountain",
+                "game" : "妖々夢",
+                "id"   : "6001"
+            },
+            {
+                "name" : "クリスタライズシルバー",
+                "game" : "妖々夢",
+                "id"   : "6002"
+            }
+        ]
+        }
+    ]
+]}
