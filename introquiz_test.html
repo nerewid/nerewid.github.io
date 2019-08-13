@@ -65,12 +65,22 @@
         $('ul.ddmenu').html('');
         $('.ddmenu').css('display',"none");
 
-        $.getJSON("./data/song_list.json",function(data){
+        $.getJSON("./song_list.json",function(data){
+            console.log(data);
             var infoCount = data.alldata.length;
             if(infoCount >= '1'){
                 $(data.alldata).each(function(){
+                    console.log(this[0]["game_display_name"]);
                     $('.ddmenu').css('display',"block");
-                    $('<li class="game" ><a class="game_title">'+this["game_display_name"]+'</a><ul class="song_list">').appendTo('ul.ddmenu');
+                    $('<li class="game" id="'+this[0]["game_display_name"]+'"><a class="game_title">'+this[0]["game_display_name"]+'</a><ul class="song_list"></ul></li>').appendTo('ul.ddmenu');
+
+                })
+
+                $(data.alldata).each(function(){
+
+                    $('.ddmenu').css('display',"block");
+                    $('<li class="game" id="'+this[0]["game_display_name"]+'"><a class="game_title">'+this[0]["game_display_name"]+'</a><ul class="song_list"></ul></li>').appendTo('ul.ddmenu');
+
                 })
             }
         })
