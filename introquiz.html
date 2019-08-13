@@ -331,6 +331,7 @@
     var quiz_fin_cnt = 2; //何問で終了か設定（クイズ数以下であること）
     var quiz_success_cnt = 0; //問題の正解数
     var quiz_max=197;
+    var quiz_omit =24
     var difficulty;
     var lock=1;
     var omission;
@@ -356,7 +357,14 @@
         }
 
         omission=$("[name=checkbox1]").prop("checked")
-
+        if(omission ==true){
+            if (quiz_max-quiz_omit<quiz_fin_cnt) {
+            quiz_fin_cnt = quiz_max-quiz_omit;
+        }else{
+            if (quiz_max<quiz_fin_cnt) {
+            quiz_fin_cnt = quiz_max;
+        }
+        }
         quizReset();
         lock=0;
     });
