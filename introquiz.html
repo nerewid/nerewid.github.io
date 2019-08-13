@@ -356,10 +356,11 @@
             quiz_fin_cnt = quiz_max
         }
 
-        omission=$("[name=checkbox1]").prop("checked")
+        omission=$("[name=Omission]").prop("checked")
         if(omission ==true){
             if (quiz_max-quiz_omit<quiz_fin_cnt) {
             quiz_fin_cnt = quiz_max-quiz_omit;
+
             }
         }else{
             if (quiz_max<quiz_fin_cnt) {
@@ -374,77 +375,77 @@
     //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
     var aryQuiz = [];
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['6'+a]});
         }
     }
     for (let index = 0; index < 20; index++) {
-        if(omission!=true && index != 18&&index != 19){
+        if(omission!=true || (index != 18&&index != 19) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['7'+a]});
         }
     }
     for (let index = 0; index < 21; index++) {
-        if(omission!=true && index != 18&&index != 19){
+        if(omission!=true ||  (index != 18&&index != 19) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['8'+a]});
         }
     }
     for (let index = 0; index < 19; index++) {
-        if(omission!=true && index != 15&&index != 16 &&index != 17 &&index != 18 ){
+        if(omission!=true || (index != 15&&index != 16 &&index != 17 &&index != 18) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['9'+a]});
         }
     }
     for (let index = 0; index < 18; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['10'+a]});
         }
     }
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['11'+a]});
         }
     }
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['12'+a]});
         }
     }
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['13'+a]});
         }
     }
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['14'+a]});
         }
     }
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['15'+a]});
         }
     }
     for (let index = 0; index < 17; index++) {
-        if(omission!=true && index != 15&&index != 16){
+        if(omission!=true || (index != 15&&index != 16) ){
         var a= ('0000000000' + index).slice(-3)
         aryQuiz.push(
         {answer : ['16'+a]});
