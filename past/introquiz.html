@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>東方イントロクイズ（仮）</title>
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="style/introquiz.css">
+  <link rel="stylesheet" href="style/lightbox.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/jquery.inview.min.js"></script>
+  <script src="js/lightbox.js"></script>
+</head>
+
+<body ontouchstart="">
+
+<section class="hero fd-in" id="hero">
+        <h2>東方イントロクイズ（仮）</h2>
+    <div class="quiz_area">
+          <div class="quiz_set">
+
+              <div class="quiz_question">
+                    <form id="setting">
+                            <label for="max">出題数を決めて下さい (現在、全部で 197 問) : </label>
+                            <input class="form" type="number" id="max" min="1" max="197" value="10"><br>
+                            <p><h3>難易度選択<h3>
+                            <input name="difficulty" type="radio"  value="1.0" checked> Easy
+                            <input name="difficulty" type="radio"  value="0.5"> Normal
+                            <input name="difficulty" type="radio"  value="0.3"> Hard
+                            <input name="difficulty" type="radio"  value="0.1"> Lunatic
+                            </p>
+                            <p><h3>オプション<h3>
+                                    <input name="Omission" type="checkbox"  value="1" > ED・スタッフロール・会話曲を除外する（接待モード）
+                                    </p>
+                            <button class="send" id="button">決定</button>
+                        </form>
+              </div>
+              <div class="quiz_area_bg"></div>
+              <div class="quiz_area_icon"></div>
+              <div class="quiz_ans_area">
+
+
+            </div>
+
+          </div>
+
+          <div class="quiz_result"></div>
+      </div>
+  </section>
+    <ul class="ddmenu">
+        <li class="game" ><a class="game_title">紅魔郷</a>
+           <ul class="song_list">
+            <li id="6000"><a>赤より紅い夢</a></li>
+            <li id="6001"><a>ほおずきみたいに紅い魂</a></li>
+            <li id="6002"><a>妖魔夜行</a></li>
+            <li id="6003"><a>ルーネイトエルフ</a></li>
+            <li id="6004"><a>おてんば恋娘</a></li>
+            <li id="6005"><a>上海紅茶館　～ Chinese Tea</a></li>
+            <li id="6006"><a>明治十七年の上海アリス</a></li>
+            <li id="6007"><a>ヴワル魔法図書館</a></li>
+            <li id="6008"><a>ラクトガール　～ 少女密室</a></li>
+            <li id="6009"><a>メイドと血の懐中時計</a></li>
+            <li id="6010"><a>月時計　～ ルナ・ダイアル</a></li>
+            <li id="6011"><a>ツェペシュの幼き末裔</a></li>
+            <li id="6012"><a>亡き王女の為のセプテット</a></li>
+            <li id="6013"><a>魔法少女達の百年祭</a></li>
+            <li id="6014"><a>U.N.オーエンは彼女なのか？</a></li>
+            <li id="6015"><a>紅より儚い永遠</a></li>
+            <li id="6016"><a>紅楼　～ Eastern Dream...</a></li>
+           </ul>
+        </li>
+        <li class="game"><a class="game_title">妖々夢</a>
+            <ul class="song_list">
+            <li id="7000"><a>妖々夢　～ Snow or Cherry Petal</a></li>
+            <li id="7001"><a>無何有の郷　～ Deep Mountain</a></li>
+            <li id="7002"><a>クリスタライズシルバー</a></li>
+            <li id="7003"><a>遠野幻想物語</a></li>
+            <li id="7004"><a>ティアオイエツォン(withered leaf)</a></li>
+            <li id="7005"><a>ブクレシュティの人形師</a></li>
+            <li id="7006"><a>人形裁判　～ 人の形弄びし少女</a></li>
+            <li id="7007"><a>天空の花の都</a></li>
+            <li id="7008"><a>幽霊楽団　～ Phantom Ensemble</a></li>
+            <li id="7009"><a>東方妖々夢　～ Ancient Temple</a></li>
+            <li id="7010"><a>広有射怪鳥事　～ Till When? </a></li>
+            <li id="7011"><a>アルティメットトゥルース</a></li>
+            <li id="7012"><a>幽雅に咲かせ、墨染の桜　～ Border of Life</a></li>
+            <li id="7013"><a>ボーダーオブライフ</a></li>
+            <li id="7014"><a>妖々跋扈</a></li>
+            <li id="7015"><a>少女幻葬　～ Necro-Fantasy </a></li>
+            <li id="7016"><a>妖々跋扈　～ Who done it!</a></li>
+            <li id="7017"><a>ネクロファンタジア</a></li>
+            <li id="7018"><a>春風の夢</a></li>
+            <li id="7019"><a>さくらさくら　～ Japanize Dream...</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">永夜抄</a>
+            <ul class="song_list">
+            <li id="8000"><a>永夜抄　～ Eastern Night.</a></li>
+            <li id="8001"><a>幻視の夜　～ Ghostly Eyes</a></li>
+            <li id="8002"><a>蠢々秋月　～ Mooned Insect</a></li>
+            <li id="8003"><a>夜雀の歌声　～ Night Bird</a></li>
+            <li id="8004"><a>もう歌しか聞こえない</a></li>
+            <li id="8005"><a>懐かしき東方の血　～ Old World </a></li>
+            <li id="8006"><a>プレインエイジア</a></li>
+            <li id="8007"><a>永夜の報い　～ Imperishable Night.</a></li>
+            <li id="8008"><a>少女綺想曲　～ Dream Battle</a></li>
+            <li id="8009"><a>恋色マスタースパーク</a></li>
+            <li id="8010"><a>シンデレラケージ　～ Kagome-Kagome </a></li>
+            <li id="8011"><a>狂気の瞳　～ Invisible Full Moon</a></li>
+            <li id="8012"><a>ヴォヤージュ1969</a></li>
+            <li id="8013"><a>千年幻想郷　～ History of the Moon</a></li>
+            <li id="8014"><a>竹取飛翔　～ Lunatic Princess</a></li>
+            <li id="8015"><a>ヴォヤージュ1970</a></li>
+            <li id="8016"><a>エクステンドアッシュ　～ 蓬莱人</a></li>
+            <li id="8017"><a>月まで届け、不死の煙</a></li>
+            <li id="8018"><a>月見草</a></li>
+            <li id="8019"><a>Eternal Dream　～ 幽玄の槭樹</a></li>
+            <li id="8020"><a>東方妖怪小町</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">花映塚</a>
+            <ul class="song_list">
+            <li id="9000"><a>花映塚　～ Higan Retour</a></li>
+            <li id="9001"><a>春色小径　～ Colorful Path</a></li>
+            <li id="9002"><a>オリエンタルダークフライト</a></li>
+            <li id="9003"><a>フラワリングナイト</a></li>
+            <li id="9004"><a>東方妖々夢　～ Ancient Temple</a></li>
+            <li id="9005"><a>狂気の瞳　～ Invisible Full Moon</a></li>
+            <li id="9006"><a>おてんば恋娘の冒険</a></li>
+            <li id="9007"><a>幽霊楽団　～ Phantom Ensemble </a></li>
+            <li id="9008"><a>もう歌しか聞こえない　～ Flower Mix</a></li>
+            <li id="9009"><a>お宇佐さまの素い幡</a></li>
+            <li id="9010"><a>風神少女　 (Short Version)</a></li>
+            <li id="9011"><a>ポイズンボディ　～ Forsaken Doll</a></li>
+            <li id="9012"><a>今昔幻想郷　～ Flower Land</a></li>
+            <li id="9013"><a>彼岸帰航　～ Riverside View</a></li>
+            <li id="9014"><a>六十年目の東方裁判　～ Fate of Sixty Years</a></li>
+            <li id="9015"><a>花の映る塚</a></li>
+            <li id="9016"><a>此岸の塚</a></li>
+            <li id="9017"><a>花は幻想のままに</a></li>
+            <li id="9018"><a>魂の花　～ Another Dream...</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">風神録</a>
+            <ul class="song_list">
+            <li id="10000"><a>封印されし神々</a></li>
+            <li id="10001"><a>人恋し神様　～ Romantic Fall</a></li>
+            <li id="10002"><a>稲田姫様に叱られるから</a></li>
+            <li id="10003"><a>厄神様の通り道　～ Dark Road</a></li>
+            <li id="10004"><a>運命のダークサイド</a></li>
+            <li id="10005"><a>神々が恋した幻想郷</a></li>
+            <li id="10006"><a>芥川龍之介の河童　～ Candid Friend</a></li>
+            <li id="10007"><a>フォールオブフォール　～ 秋めく滝</a></li>
+            <li id="10008"><a>妖怪の山　～ Mysterious Mountain</a></li>
+            <li id="10009"><a>少女が見た日本の原風景</a></li>
+            <li id="10010"><a>信仰は儚き人間の為に</a></li>
+            <li id="10011"><a>御柱の墓場　～ Grave of Being</a></li>
+            <li id="10012"><a>神さびた古戦場　～ Suwa Foughten Field</a></li>
+            <li id="10013"><a>明日ハレの日、ケの昨日</a></li>
+            <li id="10014"><a>ネイティブフェイス</a></li>
+            <li id="10015"><a>麓の神社</a></li>
+            <li id="10016"><a>神は恵みの雨を降らす　～ Sylphid Dream</a></li>
+            <li id="10017"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">地霊殿</a>
+            <ul class="song_list">
+            <li id="11000"><a>地霊達の起床</a></li>
+            <li id="11001"><a>暗闇の風穴 </a></li>
+            <li id="11002"><a>封じられた妖怪　～ Lost Place </a></li>
+            <li id="11003"><a>渡る者の途絶えた橋</a></li>
+            <li id="11004"><a>緑眼のジェラシー</a></li>
+            <li id="11005"><a>旧地獄街道を行く</a></li>
+            <li id="11006"><a>華のさかづき大江山</a></li>
+            <li id="11007"><a>ハートフェルトファンシー</a></li>
+            <li id="11008"><a>少女さとり　～ 3rd eye</a></li>
+            <li id="11009"><a>廃獄ララバイ</a></li>
+            <li id="11010"><a>死体旅行　～ Be of good cheer!</a></li>
+            <li id="11011"><a>業火マントル</a></li>
+            <li id="11012"><a>霊知の太陽信仰　～ Nuclear Fusion</a></li>
+            <li id="11013"><a>ラストリモート</a></li>
+            <li id="11014"><a>ハルトマンの妖怪少女</a></li>
+            <li id="11015"><a>地霊達の帰宅</a></li>
+            <li id="11016"><a>エネルギー黎明 ～ Future Dream... </a></li>
+            <li id="10017"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">星蓮船</a>
+            <ul class="song_list">
+            <li id="12000"><a>青空の影</a></li>
+            <li id="12001"><a>春の湊に</a></li>
+            <li id="12002"><a>小さな小さな賢将</a></li>
+            <li id="12003"><a>閉ざせし雲の通い路</a></li>
+            <li id="12004"><a>万年置き傘にご注意を</a></li>
+            <li id="12005"><a>スカイルーイン</a></li>
+            <li id="12006"><a>時代親父とハイカラ少女</a></li>
+            <li id="12007"><a>幽霊客船の時空を越えた旅</a></li>
+            <li id="12008"><a>キャプテン・ムラサ</a></li>
+            <li id="12009"><a>魔界地方都市エソテリア</a></li>
+            <li id="12010"><a>虎柄の毘沙門天</a></li>
+            <li id="12011"><a>法界の火</a></li>
+            <li id="12012"><a>感情の摩天楼　～ Cosmic Mind</a></li>
+            <li id="12013"><a>夜空のユーフォーロマンス</a></li>
+            <li id="12014"><a>平安のエイリアン</a></li>
+            <li id="12015"><a>妖怪寺</a></li>
+            <li id="12016"><a>空の帰り道　～ Sky Dream</a></li>
+            <li id="10017"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">神霊廟</a>
+            <ul class="song_list">
+            <li id="13000"><a>欲深き霊魂</a></li>
+            <li id="13001"><a>死霊の夜桜</a></li>
+            <li id="13002"><a>ゴーストリード</a></li>
+            <li id="13003"><a>妖怪寺へようこそ</a></li>
+            <li id="13004"><a>門前の妖怪小娘</a></li>
+            <li id="13005"><a>素敵な墓場で暮しましょ</a></li>
+            <li id="13006"><a>リジッドパラダイス</a></li>
+            <li id="13007"><a>デザイアドライブ </a></li>
+            <li id="13008"><a>古きユアンシェン</a></li>
+            <li id="13009"><a>夢殿大祀廟</a></li>
+            <li id="13010"><a>大神神話伝</a></li>
+            <li id="13011"><a>小さな欲望の星空</a></li>
+            <li id="13012"><a>聖徳伝説　～ True Administrator</a></li>
+            <li id="13013"><a>妖怪裏参道</a></li>
+            <li id="13014"><a>佐渡の二ッ岩</a></li>
+            <li id="13015"><a>神社の新しい風</a></li>
+            <li id="13016"><a>デザイアドリーム</a></li>
+            <li id="12809"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">輝針城</a>
+            <ul class="song_list">
+            <li id="14000"><a>不思議なお祓い棒</a></li>
+            <li id="14001"><a>ミストレイク</a></li>
+            <li id="14002"><a>秘境のマーメイド</a></li>
+            <li id="14003"><a>運河を行き交う人妖</a></li>
+            <li id="14004"><a>柳の下のデュラハン</a></li>
+            <li id="14005"><a>満月の竹林</a></li>
+            <li id="14006"><a>孤独なウェアウルフ</a></li>
+            <li id="14007"><a>マジカルストーム</a></li>
+            <li id="14008"><a>幻想浄瑠璃</a></li>
+            <li id="14009"><a>空中に沈む輝針城</a></li>
+            <li id="14010"><a>リバースイデオロギー</a></li>
+            <li id="14011"><a>針小棒大の天守閣</a></li>
+            <li id="14012"><a>輝く針の小人族　～ Little Princess</a></li>
+            <li id="14013"><a>魔力の雷雲</a></li>
+            <li id="14014"><a>始原のビート　～ Pristine Beat</a></li>
+            <li id="14015"><a>小槌の魔力</a></li>
+            <li id="14016"><a>不思議な不思議な道具達</a></li>
+            <li id="12809"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">紺珠伝</a>
+            <ul class="song_list">
+            <li id="15000"><a>宇宙巫女現る</a></li>
+            <li id="15001"><a>忘れがたき、よすがの緑</a></li>
+            <li id="15002"><a>兎は舞い降りた</a></li>
+            <li id="15003"><a>湖は浄めの月光を映して</a></li>
+            <li id="15004"><a>九月のパンプキン</a></li>
+            <li id="15005"><a>宇宙を飛ぶ不思議な巫女</a></li>
+            <li id="15006"><a>永遠の春夢</a></li>
+            <li id="15007"><a>凍り付いた永遠の都</a></li>
+            <li id="15008"><a>逆転するホイールオブフォーチュン</a></li>
+            <li id="15009"><a>遥か３８万キロのボヤージュ</a></li>
+            <li id="15010"><a>星条旗のピエロ</a></li>
+            <li id="15011"><a>故郷の星が映る海</a></li>
+            <li id="15012"><a>ピュアヒューリーズ　～ 心の在処 </a></li>
+            <li id="15013"><a>見た事も無い悪夢の世界</a></li>
+            <li id="15014"><a>パンデモニックプラネット</a></li>
+            <li id="15015"><a>神社から見える月</a></li>
+            <li id="15016"><a>宇宙巫女帰還する</a></li>
+            <li id="12809"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">天空璋</a>
+            <ul class="song_list">
+            <li id="16000"><a>桜舞い散る天空</a></li>
+            <li id="16001"><a>希望の星は青霄に昇る</a></li>
+            <li id="16002"><a>真夏の妖精の夢</a></li>
+            <li id="16003"><a>色無き風は妖怪の山に</a></li>
+            <li id="16004"><a>山奥のエンカウンター</a></li>
+            <li id="16005"><a>桜色の海を泳いで</a></li>
+            <li id="16006"><a>一対の神獣</a></li>
+            <li id="16007"><a>幻想のホワイトトラベラー</a></li>
+            <li id="16008"><a>魔法の笠地蔵</a></li>
+            <li id="16009"><a>禁断の扉の向こうは、この世かあの世か</a></li>
+            <li id="16010"><a>クレイジーバックダンサーズ</a></li>
+            <li id="16011"><a>イントゥ・バックドア</a></li>
+            <li id="16012"><a>秘匿されたフォーシーズンズ</a></li>
+            <li id="16013"><a>もうドアには入れない</a></li>
+            <li id="16014"><a>秘神マターラ　～ Hidden Star in All Seasons</a></li>
+            <li id="16015"><a>不自然な自然</a></li>
+            <li id="16016"><a>白い旅人</a></li>
+            <li id="12809"><a>プレイヤーズスコア</a></li>
+            </ul>
+        </li>
+        <li class="game"><a class="game_title">文DS</a>
+            <ul class="song_list">
+            <li id="9500"><a>天狗の手帖　～ Mysterious Note</a></li>
+            <li id="9501"><a>風の循環　～ Wind Tour </a></li>
+
+            </ul>
+        </li>
+
+    </ul>
+<br>
+  <footer>
+    <small>&copy; 2019 nerewid</small>
+    <a href="./index.html" >TOPに戻る</a>
+  </footer>
+
+  <script>
+    $(function () {
+      $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
+        if (isInView) {
+          $(this).stop().addClass('fd-done');
+        } else {
+          $(this).stop().removeClass('fd-done');
+        }
+      });
+
+
+
+    var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
+    var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
+    var quiz_cnt = 0; //現在の問題数を管理
+    var quiz_fin_cnt = 2; //何問で終了か設定（クイズ数以下であること）
+    var quiz_success_cnt = 0; //問題の正解数
+    var quiz_max=197;
+    var quiz_omit =24
+    var difficulty;
+    var lock=1;
+    var omission;
+
+    // ボタンの要素を取得
+    var button = document.getElementById("button");
+     // ボタンをクリックした時の処理
+    button.addEventListener("click", function(e) {
+        e.preventDefault();
+        // 2つの入力フォームの値を取得
+        var element = document.getElementById( "setting" ) ;
+
+        // form要素内のラジオボタングループ(name="hoge")を取得
+        var radioNodeList = element.difficulty ;
+
+        // 選択状態の値(value)を取得 (Bが選択状態なら"b"が返る)
+        difficulty= radioNodeList.value ;
+
+        var max = document.getElementById("max").value;
+        quiz_fin_cnt = parseInt(max, 10);
+        if (quiz_max<quiz_fin_cnt) {
+            quiz_fin_cnt = quiz_max
+        }
+
+        omission=$("[name=Omission]").prop("checked")
+        if(omission ==true){
+            if (quiz_max-quiz_omit<quiz_fin_cnt) {
+            quiz_fin_cnt = quiz_max-quiz_omit;
+
+            }
+        }else{
+            if (quiz_max<quiz_fin_cnt) {
+            quiz_fin_cnt = quiz_max;
+        }
+        }
+        quizReset();
+        lock=0;
+    });
+
+    //クイズの配列を設定
+    //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
+    var aryQuiz = [];
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['6'+a]});
+        }
+    }
+    for (let index = 0; index < 20; index++) {
+        if(omission!=true || (index != 18&&index != 19) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['7'+a]});
+        }
+    }
+    for (let index = 0; index < 21; index++) {
+        if(omission!=true ||  (index != 18&&index != 19) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['8'+a]});
+        }
+    }
+    for (let index = 0; index < 19; index++) {
+        if(omission!=true || (index != 15&&index != 16 &&index != 17 &&index != 18) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['9'+a]});
+        }
+    }
+    for (let index = 0; index < 18; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['10'+a]});
+        }
+    }
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['11'+a]});
+        }
+    }
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['12'+a]});
+        }
+    }
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['13'+a]});
+        }
+    }
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['14'+a]});
+        }
+    }
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['15'+a]});
+        }
+    }
+    for (let index = 0; index < 17; index++) {
+        if(omission!=true || (index != 15&&index != 16) ){
+        var a= ('0000000000' + index).slice(-3)
+        aryQuiz.push(
+        {answer : ['16'+a]});
+        }
+    }
+
+
+    //回答を選択した後の処理
+    $("ul.ddmenu li ul li").click(function(){
+        if(lock!=1){
+        quizArea.find('.quiz_area_bg').show();
+        //正解の回答を取得する
+        var success = aryQuiz[quiz_cnt]['answer'][0];
+        //console.log(success);
+        //console.log($(this).attr("id"));
+        if($(this).attr("id")==success){
+            //正解の処理 〇を表示
+            quizArea.find('.quiz_area_icon').addClass('true');
+            //正解数をカウント
+            quiz_success_cnt++;
+        }else{
+            //不正解の処理
+            quizArea.find('.quiz_area_icon').addClass('false');
+        }
+        setTimeout(function(){
+            //表示を元に戻す
+            quizArea.find('.quiz_ans_area ul li').removeClass('selected');
+            quizArea.find('.quiz_area_icon').removeClass('true false');
+            quizArea.find('.quiz_area_bg').hide();
+            //問題のカウントを進める
+            quiz_cnt++;
+            if(quiz_fin_cnt > quiz_cnt){
+                //次の問題を設定する
+                quizShow();
+            }else{
+                //結果表示画面を表示
+                quizResult();
+            }
+        }, 1500);
+        }
+    });
+
+    //もう一度挑戦するを押した時の処理
+    quizArea.on('click', '.quiz_restart', function(){
+        quizReset();
+    });
+
+    //リセットを行う関数
+    function quizReset(){
+        quizArea.html(quiz_html); //表示を元に戻す
+        quiz_cnt = 0;
+        quiz_success_cnt = 0;
+        aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
+        quizShow();
+    }
+
+    //問題を表示する関数
+    function quizShow(){
+
+        //問題文を表示
+        //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
+        var ans_id = aryQuiz[quiz_cnt]['answer'][0];
+
+        quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 (全'+quiz_fin_cnt+'問) <br><audio id="audio" name="sound" controls controlsList="nodownload"> <source src="mp3/'+difficulty+"/"+ans_id+'.mp3" type="audio/wav"> </audio>');
+
+    }
+
+    //結果を表示する関数
+    function quizResult(){
+        quizArea.find('.quiz_set').hide();
+        var diff_name;
+        if(difficulty==1.0){
+            diff_name="Easy";
+        }else if(difficulty==0.5){
+            diff_name="Normal";
+        }else if(difficulty==0.3){
+            diff_name="Hard";
+        }else if(difficulty==0.1){
+            diff_name="Lunatic";
+        }
+
+
+        $text = '難易度'+diff_name+'で '+quiz_fin_cnt + '問中 ' + quiz_success_cnt + '問正解！';
+        if(quiz_fin_cnt === quiz_success_cnt){
+            $text += '<br>全問正解おめでとう！';
+        }
+        $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズ（仮）に挑戦しました！\n'+'難易度'+diff_name+'で '+quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
+
+
+        $text += '<br><input type="button" value="もう一度挑戦する" class="quiz_restart">';
+        quizArea.find('.quiz_result').html($text);
+        quizArea.find('.quiz_result').show();
+    }
+
+    //配列をシャッフルする関数
+    function arrShuffle(arr){
+        for(i = arr.length - 1; i > 0; i--){
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+        return arr;
+    }
+    });
+
+    // ▼マウスが載ったらサブメニューを表示
+    $("ul.ddmenu li").click(function(){
+    //$("ul.ddmenu li").mouseenter(function(){
+
+         $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
+         $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
+      });
+      // ▼どこかがクリックされたらサブメニューを消す
+      /*$('html').click(function() {
+         $('ul.ddmenu ul').slideUp(150);
+      });*/
+
+  </script>
+</body>
+
+</html>

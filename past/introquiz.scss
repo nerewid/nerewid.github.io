@@ -49,7 +49,6 @@ section {
 }
 
 .hero {
-  height:100%;
   padding: 40px 10% 30px;
   background-image: linear-gradient(-45deg, #74ebd5 0%, #ACB6E5 100%);
   color: #fff;
@@ -120,13 +119,10 @@ section {
 }
 
 footer {
-  width: 100%;
   padding: 15px 0;
   background: $bg-footer;
   text-align: center;
   color: #fff;
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
 
   small {
     font-size: 14px;
@@ -246,7 +242,6 @@ ul.ddmenu ul ul {
         /* .trueは正解（〇を表示） */
         content: '〇';
         color: red;
-        opacity: 0.5;
       }
     }
 
@@ -256,7 +251,6 @@ ul.ddmenu ul ul {
         /* .falseは不正解（×を表示） */
         content: '×';
         color: blue;
-        opacity: 0.5;
       }
     }
   }
