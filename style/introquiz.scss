@@ -67,7 +67,7 @@ section {
     line-height: 1.5;
     }
   }
-
+  ul li { list-style-type:none; background-image:none; font-weight: normal }
   p {
     font-size: 20px;
     line-height: 1;
@@ -78,7 +78,7 @@ section {
     }
   }
 
-  a {
+  /*a {
     display: inline-block;
     background: #fff;
     padding: 15px 40px 15px 20px;
@@ -116,7 +116,7 @@ section {
         border-color: #fff;
       }
     }
-  }
+  }*/
 }
 
 footer {

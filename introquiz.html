@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>東方イントロクイズ（仮）</title>
+    <title>東方イントロクイズ</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link rel="stylesheet" href="style/introquiz.css">
     <link rel="stylesheet" href="style/lightbox.css">
@@ -23,21 +23,22 @@
         <div class="quiz_set">
             <div class="quiz_question">
                 <form id="setting">
-                    <label class="intro" for="max">出題数を決めて下さい (現在、全部で 197 問) : </label>
-                        <input class="form" type="number" id="max" min="1" max="197" value="10"><br>
-                        <p><h3>難易度選択<h3>
+                    <label class="intro" for="max" ><h3>出題する数を決めて下さい (現在、全部で 197 問) : </label>
+                        <input class="form" type="number" id="max" min="1" max="197" value="10">問<h3><br>
+                        <p><h3>難易度を選択して下さい<h3>
                             <input name="difficulty" type="radio"  value="1.0" checked> Easy
                             <input name="difficulty" type="radio"  value="0.5"> Normal
                             <input name="difficulty" type="radio"  value="0.3"> Extra
                             <input name="difficulty" type="radio"  value="0.2"> Hard
                             <input name="difficulty" type="radio"  value="0.1"> Lunatic
-                        </p>
+                        </p><br>
                         <p><h3>オプション<h3>
                             <input name="Omission" type="checkbox"  value="1" > ED・スタッフロール・会話曲を除外する（接待モード）
                         </p>
                         <button class="send" id="button">決定</button>
                 </form>
-
+                <br>
+                <a href="./help.html" target="_blank">細かい話</a>
             </div>
             <br>
                 <div class="ans_area"></div>
