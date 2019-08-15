@@ -23,7 +23,7 @@
         <div class="quiz_set">
             <div class="quiz_question">
                 <form id="setting">
-                    <label class="intro" for="max" ><h3>出題する数を決めて下さい (現在、全部で 197 問) : </label>
+                    <label class="intro" for="max" ><h3>出題する数を決めて下さい (現在、全部で 243 問) : </label>
                         <input class="form" type="number" id="max" min="1" max="197" value="10">問<h3><br>
                         <p><h3>難易度を選択して下さい<h3>
                             <input name="difficulty" type="radio"  value="1.0" checked> Easy
@@ -33,7 +33,8 @@
                             <input name="difficulty" type="radio"  value="0.1"> Lunatic
                         </p><br>
                         <p><h3>オプション<h3>
-                            <input name="Omission" type="checkbox"  value="1" > ED・スタッフロール・会話曲を除外する（接待モード）
+                            <input name="IncludeSubstream" type="checkbox"  value="1" > 小数点ナンバー作品を含める<br>
+                            <input name="OmissionED" type="checkbox"  value="1" > ED・スタッフロール・会話曲を除外する（接待モード）
                         </p>
                         <button class="send" id="button">決定</button>
                 </form>
@@ -95,9 +96,12 @@
 
             // プルダウンメニューの動的生成
             $(data.alldata).each(function(){
+                // メニューに表示される項目の名前
+                var game_display_name=this[0]["game_display_name"]
+                // 各曲の項目を追加
                 $(this[0]["songs"]).each(function(){
                     $('<li id="'+this["id"]+'"><a>'+
-                        this["name"]+'</a></li>').appendTo("#"+this["game"]);
+                        this["name"]+'</a></li>').appendTo("#"+game_display_name);
                 })
             })
         })
@@ -128,22 +132,37 @@
                 diff_name="Lunatic";
             }
 
-            isOmitted=$("[name=Omission]").prop("checked");
+            isOmitted=$("[name=OmissionED]").prop("checked");
+            isInclude=$("[name=IncludeSubstream]").prop("checked");
+
             var max = document.getElementById("max").value;
             quiz_fin_cnt = parseInt(max, 10);
+
+            var whetherInclude=true;
             $.getJSON("./data/song_list.json",function(data){
             //quiz収納
                 $(data.alldata).each(function(){
-                $(this[0]["songs"]).each(function(){
+                    if(this[0]["substream"]=="Yes"){
+                        // 小数点作品は含めるかどうか判定する
+                        $(this[0]["songs"]).each(function(){
+                            if(isInclude==true){
+                                if( this["not_bgm"]!="Yes" || (this["not_bgm"]=="Yes" && isOmitted!=true) ) {
 
-                    if(this["not_bgm"]=="Yes" && isOmitted!=true){
-                        console.log(this["not_bgm"]);
-                        console.log(isOmitted);
-                        aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
-                        quiz_max +=1;
-                        console.log(quiz_max);
+                                    aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
+                                    quiz_max +=1;
+                                }
+                            }
+                        })
+                    }else{
+                        // 整数作品はEDを入れる
+                        $(this[0]["songs"]).each(function(){
+                            if( (this["not_bgm"]=="Yes" && isOmitted!=true)) {
+                                aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
+                                quiz_max +=1;
+                            }
+                        })
                     }
-                })
+
                 })
 
             })
@@ -165,12 +184,15 @@
         $.getJSON("./data/song_list.json",function(data){
             //quiz収納
             $(data.alldata).each(function(){
-                $(this[0]["songs"]).each(function(){
-                    if(this["not_bgm"]!="Yes"){
-                        aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
-                        quiz_max +=1;
-                    }
-                })
+                if(this[0]["substream"]!="Yes"){
+                    $(this[0]["songs"]).each(function(){
+                        if(this["not_bgm"]!="Yes"){
+
+                            aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
+                            quiz_max +=1;
+                        }
+                    })
+                }
             })
         })
 
