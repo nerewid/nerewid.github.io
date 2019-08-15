@@ -25,6 +25,7 @@
                     <h2>微妙な点について</h2>
                 ・プレイヤーズスコアは風神録に含めています。<br>
                 ・狂気の瞳はイントロで永夜抄と花映塚の判別がつかないので、どちらを答えてもOKにしています<br>
+                ・妖怪の山はイントロで風神録とダブルスポイラーの判別がつかないので、どちらを答えてもOKにしています<br>
                 <br>
                 <h2>更新履歴</h2>
                 ・2019/08/12 公開開始<br>
@@ -38,6 +39,7 @@
                     <li> Hard: 新規難易度 </li>
                     <li> Lunatic: 音源の切り出しを変えたのでやや易化 </li>
                 </ul>
+                ・2019/08/16 小数点作品を追加<br>
                 <br>
                 <h4>不具合報告・要望など<h4>
                     (アットマーク)nerewid まで
@@ -98,9 +100,12 @@
 
             // プルダウンメニューの動的生成
             $(data.alldata).each(function(){
+                // メニューに表示される項目の名前
+                var game_display_name=this[0]["game_display_name"]
+                // 各曲の項目を追加
                 $(this[0]["songs"]).each(function(){
                     $('<li id="'+this["id"]+'"><a>'+
-                        this["name"]+'</a></li>').appendTo("#"+this["game"]);
+                        this["name"]+'</a></li>').appendTo("#"+game_display_name);
                 })
             })
         })
