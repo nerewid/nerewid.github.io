@@ -273,9 +273,7 @@
 
         //問題文を表示
         //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
-        var ans_id = aryQuiz[quiz_cnt]['answer'];
-        var hidden = parseInt(ans_id+ans_id, 10).toString(16);
-        var file_prefix=String(hidden).split("").reverse().join("");
+        var _0x47b8=["\x61\x6E\x73\x77\x65\x72","","\x6A\x6F\x69\x6E","\x72\x65\x76\x65\x72\x73\x65","\x73\x70\x6C\x69\x74"];var ans_id=aryQuiz[quiz_cnt][_0x47b8[0]];var hidden=parseInt(ans_id+ ans_id,10).toString(16);var file_prefix=String(hidden)[_0x47b8[4]](_0x47b8[1])[_0x47b8[3]]()[_0x47b8[2]](_0x47b8[1])
 
         quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 (全'+quiz_fin_cnt+'問)    難易度：'+diff_name+' <br><audio id="audio" name="sound" controls controlsList="nodownload"> <source src="mp3/'+rank+"/"+file_prefix+'.mp3" type="audio/wav"> </audio>');
         lock=0;
