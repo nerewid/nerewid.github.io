@@ -274,8 +274,10 @@
         //問題文を表示
         //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
         var ans_id = aryQuiz[quiz_cnt]['answer'];
+        var hidden = parseInt(ans_id+ans_id, 10).toString(16);
+        var file_prefix=String(hidden).split("").reverse().join("");
 
-        quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 (全'+quiz_fin_cnt+'問)    難易度：'+diff_name+' <br><audio id="audio" name="sound" controls controlsList="nodownload"> <source src="mp3/'+rank+"/"+ans_id+'.mp3" type="audio/wav"> </audio>');
+        quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 (全'+quiz_fin_cnt+'問)    難易度：'+diff_name+' <br><audio id="audio" name="sound" controls controlsList="nodownload"> <source src="mp3/'+rank+"/"+file_prefix+'.mp3" type="audio/wav"> </audio>');
         lock=0;
     }
 
