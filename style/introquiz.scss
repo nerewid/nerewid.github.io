@@ -127,7 +127,7 @@ footer {
   color: #fff;
   position: fixed;/*←絶対位置*/
   bottom: 0; /*下に固定*/
-  @media screen and (max-width: 800px)  {
+  @media screen   {
     display:none;
   }
   small {
