@@ -123,6 +123,12 @@ footer {
   /*下に固定*/
 }
 
+@media screen and (max-width: 800px) {
+  footer {
+    display: none;
+  }
+}
+
 footer small {
   font-size: 14px;
   line-height: 1;
