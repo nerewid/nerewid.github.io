@@ -117,7 +117,7 @@ footer {
   background: #444;
   text-align: center;
   color: #fff;
-  position: absolute;
+  position: fixed;
   /*←絶対位置*/
   bottom: 0;
   /*下に固定*/

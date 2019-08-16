@@ -125,7 +125,7 @@ footer {
   background: $bg-footer;
   text-align: center;
   color: #fff;
-  position: absolute;/*←絶対位置*/
+  position: fixed;/*←絶対位置*/
   bottom: 0; /*下に固定*/
 
   small {
