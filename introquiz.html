@@ -74,6 +74,7 @@
     var lock=1;
     var isOmitted=false;
     var diff_name;
+    var head;
 
     $(function () {
 
@@ -177,6 +178,8 @@
                 },
                 "200"
             );
+            var start = new Date();
+            head =start.getTime()
     });
 
 
@@ -281,13 +284,18 @@
 
     //結果を表示する関数
     function quizResult(){
+        var stop = new Date();
         quizArea.find('.quiz_set').hide();
+        var ms = stop.getTime() - head;
+        var s = (ms/1000).toFixed(1);
+        var ps = (ms/quiz_fin_cnt/1000).toFixed(1);
 
         $text = '難易度'+diff_name+'で '+quiz_fin_cnt + '問中 ' + quiz_success_cnt + '問正解！';
         if(quiz_fin_cnt === quiz_success_cnt){
             $text += '<br>全問正解おめでとう！';
         }
-        $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズに挑戦しました！\n'+'難易度'+diff_name+'で '+quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
+        $text += '<br>解答時間'+s+ '秒 1問あたり' + ps + '秒';
+        $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズに挑戦しました！\n'+'難易度'+diff_name+'で '+quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n解答時間： '+s+' 秒\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
 
 
         $text += '<br><input type="button" value="もう一度挑戦する" class="quiz_restart">';
