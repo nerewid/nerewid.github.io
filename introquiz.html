@@ -147,8 +147,7 @@
                         // 小数点作品は含めるかどうか判定する
                         $(this[0]["songs"]).each(function(){
                             if(isInclude==true){
-                                if( this["not_bgm"]!="Yes" || (this["not_bgm"]=="Yes" && isOmitted!=true) ) {
-
+                                if( (this["not_bgm"]!="Yes" && this["dummy"]!="Yes" )|| (this["not_bgm"]=="Yes" && isOmitted!=true) ) {
                                     aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
                                     quiz_max +=1;
                                 }
@@ -189,8 +188,7 @@
             $(data.alldata).each(function(){
                 if(this[0]["substream"]!="Yes"){
                     $(this[0]["songs"]).each(function(){
-                        if(this["not_bgm"]!="Yes"){
-
+                        if(this["not_bgm"]!="Yes" && this["dummy"]!="Yes" ){
                             aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
                             quiz_max +=1;
                         }
