@@ -1,132 +1,135 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>細かい話</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="style/introquiz.css">
-    <link rel="stylesheet" href="style/lightbox.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
-    <script src="js/lightbox.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>細かい話</title>
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="stylesheet" href="style/introquiz.css">
+        <link rel="stylesheet" href="style/lightbox.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese"
+            rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/jquery.inview.min.js"></script>
+        <script src="js/lightbox.js"></script>
+    </head>
 
-<body ontouchstart="">
+    <body ontouchstart="">
 
-<section class="hero fd-in" id="hero">
-        <h2>東方イントロクイズ 細かい話</h2>
-    <div class="quiz_area">
-        <div class="quiz_set">
-            <div class="quiz_question">
-                    <h2>微妙な点について</h2>
-                ・プレイヤーズスコアは風神録に含めています。<br>
-                ・狂気の瞳はイントロで永夜抄と花映塚の判別がつかないので、どちらを答えてもOKにしています<br>
-                ・妖怪の山はイントロで風神録とダブルスポイラーの判別がつかないので、どちらを答えてもOKにしています<br>
-                <br>
-                <h2>更新履歴</h2>
-                ・2019/08/12 公開開始<br>
-                ・2019/08/13 難易度を設定・天空璋までの整数ナンバー作品対応・スマホに対応<br>
-                ・2019/08/14 正解を表示するように<br>
-                ・2019/08/15 難易度改定。音源の切り出し方を変えたので、Easy,Normal以外は8/14までの難易度と互換性がありません。<br>
-                <ul>
-                    <li> Easy: ほぼ同じ </li>
-                    <li> Normal: ほぼ同じ </li>
-                    <li> Extra: 8/14までのHardに相当 </li>
-                    <li> Hard: 新規難易度 </li>
-                    <li> Lunatic: 音源の切り出しを変えたのでやや易化 </li>
-                </ul>
-                ・2019/08/16 小数点作品を追加<br>
-                ・2019/08/17 解答時間を記録するようになりました。<br>
-                <br>
-                <h4>不具合報告・要望など<h4>
-                    (アットマーク)nerewid まで
+        <section class="hero fd-in" id="hero">
+            <h2>東方イントロクイズ 細かい話</h2>
+            <div class="quiz_area">
+                <div class="quiz_set">
+                    <div class="quiz_question">
+                        ※使用されている楽曲はすべて nerewid の著作物ではなく、上海アリス幻樂団または黄昏フロンティアの著作物です。
+                        ※またこれらの著作物の冒頭1.0秒以上のデータを当サイトは保持しておりません。
+                        <h2>微妙な点について</h2>
+                        ・プレイヤーズスコアは風神録に含めています。<br>
+                        ・狂気の瞳はイントロで永夜抄と花映塚の判別がつかないので、どちらを答えてもOKにしています<br>
+                        ・妖怪の山はイントロで風神録とダブルスポイラーの判別がつかないので、どちらを答えてもOKにしています<br>
+                        <br>
+                        <h2>更新履歴</h2>
+                        ・2019/08/12 公開開始<br>
+                        ・2019/08/13 難易度を設定・天空璋までの整数ナンバー作品対応・スマホに対応<br>
+                        ・2019/08/14 正解を表示するように<br>
+                        ・2019/08/15 難易度改定。音源の切り出し方を変えたので、Easy,Normal以外は8/14までの難易度と互換性がありません。<br>
+                        <ul>
+                            <li> Easy: ほぼ同じ </li>
+                            <li> Normal: ほぼ同じ </li>
+                            <li> Extra: 8/14までのHardに相当 </li>
+                            <li> Hard: 新規難易度 </li>
+                            <li> Lunatic: 音源の切り出しを変えたのでやや易化 </li>
+                        </ul>
+                        ・2019/08/16 小数点作品を追加<br>
+                        ・2019/08/17 解答時間を記録するようになりました。<br>
+                        <br>
+                        <h4>不具合報告・要望など<h4>
+                                (アットマーク)nerewid まで
 
+                    </div>
+                    <br>
+                    <div class="ans_area"></div>
+                    <div class="quiz_area_bg"></div>
+                    <div class="quiz_area_icon"></div>
+
+
+                </div>
+                <div class="quiz_result"></div>
             </div>
-            <br>
-                <div class="ans_area"></div>
-            <div class="quiz_area_bg"></div>
-            <div class="quiz_area_icon"></div>
+        </section>
 
+        <ul class="ddmenu">
 
-        </div>
-        <div class="quiz_result"></div>
-    </div>
-</section>
+        </ul>
+        <br>
+        <footer>
+            <small>&copy; 2019 nerewid</small>
+            <a href="./index.html">TOPに戻る</a>
+        </footer>
 
-    <ul class="ddmenu">
+        <script>
+            //クイズの配列を設定
+            var aryQuiz = [];
+            var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
+            var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
+            var quiz_cnt = 0; //現在の問題数を管理
+            var quiz_fin_cnt = 1; //何問で終了か設定（クイズ数以下であること）
+            var quiz_success_cnt = 0; //問題の正解数
+            var quiz_max = 0;
+            var rank = "1.0";
+            var lock = 1;
+            var isOmitted = false;
+            var diff_name;
 
-    </ul>
-<br>
-<footer>
-    <small>&copy; 2019 nerewid</small>
-    <a href="./index.html" >TOPに戻る</a>
-</footer>
+            $(function () {
 
-<script>
-    //クイズの配列を設定
-    var aryQuiz = [];
-    var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
-    var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
-    var quiz_cnt = 0; //現在の問題数を管理
-    var quiz_fin_cnt = 1; //何問で終了か設定（クイズ数以下であること）
-    var quiz_success_cnt = 0; //問題の正解数
-    var quiz_max=0;
-    var rank="1.0";
-    var lock=1;
-    var isOmitted=false;
-    var diff_name;
+                //選択肢部分
+                $('ul.ddmenu').html('');
+                $('.ddmenu').css('display', "none");
 
-    $(function () {
+                // json読み込み
+                $.getJSON("./data/song_list.json", function (data) {
+                    $(data.alldata).each(function () {
 
-        //選択肢部分
-        $( 'ul.ddmenu').html('');
-        $('.ddmenu').css('display',"none");
+                        // 作品名を指定して大枠を動的生成
+                        $('.ddmenu').css('display', "block");
+                        $('<li class="game"><a class="game_title" >' +
+                            this[0]["game_display_name"] +
+                            '</a><ul class="song_list" id=' +
+                            this[0]["game_display_name"] +
+                            '></ul></li>').appendTo('ul.ddmenu');
+                    })
 
-        // json読み込み
-        $.getJSON("./data/song_list.json",function(data){
-            $(data.alldata).each(function(){
-
-                // 作品名を指定して大枠を動的生成
-                $('.ddmenu').css('display',"block");
-                $('<li class="game"><a class="game_title" >'+
-                    this[0]["game_display_name"]+
-                    '</a><ul class="song_list" id='+
-                    this[0]["game_display_name"]+
-                    '></ul></li>').appendTo('ul.ddmenu');
-            })
-
-            // プルダウンメニューの動的生成
-            $(data.alldata).each(function(){
-                // メニューに表示される項目の名前
-                var game_display_name=this[0]["game_display_name"]
-                // 各曲の項目を追加
-                $(this[0]["songs"]).each(function(){
-                    $('<li id="'+this["id"]+'"><a>'+
-                        this["name"]+'</a></li>').appendTo("#"+game_display_name);
+                    // プルダウンメニューの動的生成
+                    $(data.alldata).each(function () {
+                        // メニューに表示される項目の名前
+                        var game_display_name = this[0]["game_display_name"]
+                        // 各曲の項目を追加
+                        $(this[0]["songs"]).each(function () {
+                            $('<li id="' + this["id"] + '"><a>' +
+                                this["name"] + '</a></li>').appendTo("#" + game_display_name);
+                        })
+                    })
                 })
-            })
-        })
 
-    $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
-        if (isInView) {
-            $(this).stop().addClass('fd-done');
-        } else {
-            $(this).stop().removeClass('fd-done');
-        }
-    });
+                $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
+                    if (isInView) {
+                        $(this).stop().addClass('fd-done');
+                    } else {
+                        $(this).stop().removeClass('fd-done');
+                    }
+                });
 
-    });
+            });
 
-    // マウスが載ったらサブメニューを表示
-    $(document).on("click","li.game", function(){
-        $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
-        $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
-    });
-</script>
-</body>
+            // マウスが載ったらサブメニューを表示
+            $(document).on("click", "li.game", function () {
+                $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
+                $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
+            });
+        </script>
+    </body>
 
 </html>
