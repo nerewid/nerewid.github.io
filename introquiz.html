@@ -324,10 +324,14 @@
                 $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
                 $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
             });
-
-            if (event.keyCode == 32) {
-                $("audio").play();
+            document.onkeydown = pageMove;
+            function pageMove() {
+                if (event.keyCode == 32) {
+                    $("audio").play();
+                }
             }
+
+
         </script>
     </body>
 
