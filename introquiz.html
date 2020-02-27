@@ -1,324 +1,334 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>東方イントロクイズ</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="style/introquiz.css">
-    <link rel="stylesheet" href="style/lightbox.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/jquery.inview.min.js"></script>
-    <script src="js/lightbox.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>東方イントロクイズ</title>
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="stylesheet" href="style/introquiz.css">
+        <link rel="stylesheet" href="style/lightbox.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,500,900&amp;subset=japanese"
+            rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/jquery.inview.min.js"></script>
+        <script src="js/lightbox.js"></script>
+    </head>
 
-<body ontouchstart="">
+    <body ontouchstart="">
 
-<section class="hero fd-in" id="hero">
-        <h2>東方イントロクイズ</h2>
-    <div class="quiz_area">
-        <div class="quiz_set">
-            <div class="quiz_question">
-                <form id="setting">
-                    <label class="intro" for="max" ><h3>出題する数を決めて下さい (現在、全部で 243 問) : </label>
-                        <input class="form" type="number" id="max" min="1" max="197" value="10">問<h3><br>
-                        <p><h3>難易度を選択して下さい<h3>
-                            <input name="difficulty" type="radio"  value="1.0" checked> Easy
-                            <input name="difficulty" type="radio"  value="0.5"> Normal
-                            <input name="difficulty" type="radio"  value="0.3"> Extra
-                            <input name="difficulty" type="radio"  value="0.2"> Hard
-                            <input name="difficulty" type="radio"  value="0.1"> Lunatic
-                        </p><br>
-                        <p><h3>オプション<h3>
-                            <input name="IncludeSubstream" type="checkbox"  value="1" > 小数点ナンバー作品を含める<br>
-                            <input name="OmissionED" type="checkbox"  value="1" > ED・スタッフロール・会話曲を除外する（接待モード）
-                        </p>
-                        <button class="send" id="button">決定</button>
-                </form>
-                <br>
-                <a href="./help.html" target="_blank">細かい話</a>
+        <section class="hero fd-in" id="hero">
+            <h2>東方イントロクイズ</h2>
+            <div class="quiz_area">
+                <div class="quiz_set">
+                    <div class="quiz_question">
+                        <form id="setting">
+                            <label class="intro" for="max">
+                                <h3>出題する数を決めて下さい (現在、全部で 243 問) :
+                            </label>
+                            <input class="form" type="number" id="max" min="1" max="197" value="10">問<h3><br>
+                                <p>
+                                    <h3>難易度を選択して下さい<h3>
+                                            <input name="difficulty" type="radio" value="1.0" checked> Easy
+                                            <input name="difficulty" type="radio" value="0.5"> Normal
+                                            <input name="difficulty" type="radio" value="0.3"> Extra
+                                            <input name="difficulty" type="radio" value="0.2"> Hard
+                                            <input name="difficulty" type="radio" value="0.1"> Lunatic
+                                </p><br>
+                                <p>
+                                    <h3>オプション<h3>
+                                            <input name="IncludeSubstream" type="checkbox" value="1"> 小数点ナンバー作品を含める<br>
+                                            <input name="OmissionED" type="checkbox" value="1">
+                                            ED・スタッフロール・会話曲を除外する（接待モード）
+                                </p>
+                                <button class="send" id="button">決定</button>
+                        </form>
+                        <br>
+                        <a href="./help.html" target="_blank">細かい話</a>
+                    </div>
+                    <br>
+                    <div class="ans_area"></div>
+                    <div class="quiz_area_bg"></div>
+                    <div class="quiz_area_icon"></div>
+
+
+                </div>
+                <div class="quiz_result"></div>
             </div>
-            <br>
-                <div class="ans_area"></div>
-            <div class="quiz_area_bg"></div>
-            <div class="quiz_area_icon"></div>
+        </section>
 
+        <ul class="ddmenu">
 
-        </div>
-        <div class="quiz_result"></div>
-    </div>
-</section>
+        </ul>
+        <br>
+        <footer>
+            <small>&copy; 2019 nerewid</small>
+            <a href="./index.html">TOPに戻る</a>
+        </footer>
 
-    <ul class="ddmenu">
+        <script>
+            //クイズの配列を設定
+            var aryQuiz = [];
+            var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
+            var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
+            var quiz_cnt = 0; //現在の問題数を管理
+            var quiz_fin_cnt = 1; //何問で終了か設定（クイズ数以下であること）
+            var quiz_success_cnt = 0; //問題の正解数
+            var quiz_max = 0;
+            var rank = "1.0";
+            var lock = 1;
+            var isOmitted = false;
+            var diff_name;
+            var head;
 
-    </ul>
-<br>
-<footer>
-    <small>&copy; 2019 nerewid</small>
-    <a href="./index.html" >TOPに戻る</a>
-</footer>
+            $(function () {
 
-<script>
-    //クイズの配列を設定
-    var aryQuiz = [];
-    var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
-    var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
-    var quiz_cnt = 0; //現在の問題数を管理
-    var quiz_fin_cnt = 1; //何問で終了か設定（クイズ数以下であること）
-    var quiz_success_cnt = 0; //問題の正解数
-    var quiz_max=0;
-    var rank="1.0";
-    var lock=1;
-    var isOmitted=false;
-    var diff_name;
-    var head;
+                //選択肢部分
+                $('ul.ddmenu').html('');
+                $('.ddmenu').css('display', "none");
 
-    $(function () {
+                // json読み込み
+                $.getJSON("./data/song_list.json", function (data) {
+                    $(data.alldata).each(function () {
 
-        //選択肢部分
-        $( 'ul.ddmenu').html('');
-        $('.ddmenu').css('display',"none");
+                        // 作品名を指定して大枠を動的生成
+                        $('.ddmenu').css('display', "block");
+                        $('<li class="game"><a class="game_title" >' +
+                            this[0]["game_display_name"] +
+                            '</a><ul class="song_list" id=' +
+                            this[0]["game_display_name"] +
+                            '></ul></li>').appendTo('ul.ddmenu');
+                    })
 
-        // json読み込み
-        $.getJSON("./data/song_list.json",function(data){
-            $(data.alldata).each(function(){
-
-                // 作品名を指定して大枠を動的生成
-                $('.ddmenu').css('display',"block");
-                $('<li class="game"><a class="game_title" >'+
-                    this[0]["game_display_name"]+
-                    '</a><ul class="song_list" id='+
-                    this[0]["game_display_name"]+
-                    '></ul></li>').appendTo('ul.ddmenu');
-            })
-
-            // プルダウンメニューの動的生成
-            $(data.alldata).each(function(){
-                // メニューに表示される項目の名前
-                var game_display_name=this[0]["game_display_name"]
-                // 各曲の項目を追加
-                $(this[0]["songs"]).each(function(){
-                    $('<li id="'+this["id"]+'"><a>'+
-                        this["name"]+'</a></li>').appendTo("#"+game_display_name);
+                    // プルダウンメニューの動的生成
+                    $(data.alldata).each(function () {
+                        // メニューに表示される項目の名前
+                        var game_display_name = this[0]["game_display_name"]
+                        // 各曲の項目を追加
+                        $(this[0]["songs"]).each(function () {
+                            $('<li id="' + this["id"] + '"><a>' +
+                                this["name"] + '</a></li>').appendTo("#" + game_display_name);
+                        })
+                    })
                 })
-            })
-        })
 
-        // ボタンの要素を取得
-        var button = document.getElementById("button");
-        // ボタンをクリックした時の処理
-        button.addEventListener("click", function(e) {
-            e.preventDefault();
-            // 2つの入力フォームの値を取得
-            var element = document.getElementById( "setting" ) ;
+                // ボタンの要素を取得
+                var button = document.getElementById("button");
+                // ボタンをクリックした時の処理
+                button.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    // 2つの入力フォームの値を取得
+                    var element = document.getElementById("setting");
 
-            // form要素内のラジオボタングループ(name="hoge")を取得
-            var radioNodeList = element.difficulty ;
+                    // form要素内のラジオボタングループ(name="hoge")を取得
+                    var radioNodeList = element.difficulty;
 
-            // 選択状態の値(value)を取得 (Bが選択状態なら"b"が返る)
-            rank= radioNodeList.value ;
+                    // 選択状態の値(value)を取得 (Bが選択状態なら"b"が返る)
+                    rank = radioNodeList.value;
 
-            if(rank==1.0){
-                diff_name="Easy";
-            }else if(rank==0.5){
-                diff_name="Normal";
-            }else if(rank==0.3){
-                diff_name="Extra";
-            }else if(rank==0.2){
-                diff_name="Hard";
-            }else if(rank==0.1){
-                diff_name="Lunatic";
-            }
-
-            isOmitted=$("[name=OmissionED]").prop("checked");
-            isInclude=$("[name=IncludeSubstream]").prop("checked");
-
-            var max = document.getElementById("max").value;
-            quiz_fin_cnt = parseInt(max, 10);
-
-            var whetherInclude=true;
-            $.getJSON("./data/song_list.json",function(data){
-            //quiz収納
-                $(data.alldata).each(function(){
-                    if(this[0]["substream"]=="Yes"){
-                        // 小数点作品は含めるかどうか判定する
-                        $(this[0]["songs"]).each(function(){
-                            if(isInclude==true){
-                                if( (this["not_bgm"]!="Yes" && this["dummy"]!="Yes" )|| (this["not_bgm"]=="Yes" && isOmitted!=true) ) {
-                                    aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
-                                    quiz_max +=1;
-                                }
-                            }
-                        })
-                    }else{
-                        // 整数作品はEDを入れる
-                        $(this[0]["songs"]).each(function(){
-                            if( (this["not_bgm"]=="Yes" && isOmitted!=true)) {
-                                aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
-                                quiz_max +=1;
-                            }
-                        })
+                    if (rank == 1.0) {
+                        diff_name = "Easy";
+                    } else if (rank == 0.5) {
+                        diff_name = "Normal";
+                    } else if (rank == 0.3) {
+                        diff_name = "Extra";
+                    } else if (rank == 0.2) {
+                        diff_name = "Hard";
+                    } else if (rank == 0.1) {
+                        diff_name = "Lunatic";
                     }
 
-                })
+                    isOmitted = $("[name=OmissionED]").prop("checked");
+                    isInclude = $("[name=IncludeSubstream]").prop("checked");
 
-            })
-            // 上の処理を待つ必要がある
-            setTimeout(
-                function () {
-                    if (quiz_max<quiz_fin_cnt) {
-                quiz_fin_cnt = quiz_max;
-            }
-            quizReset();
-            lock=0;
-                },
-                "200"
-            );
-            var start = new Date();
-            head =start.getTime()
-    });
+                    var max = document.getElementById("max").value;
+                    quiz_fin_cnt = parseInt(max, 10);
+
+                    var whetherInclude = true;
+                    $.getJSON("./data/song_list.json", function (data) {
+                        //quiz収納
+                        $(data.alldata).each(function () {
+                            if (this[0]["substream"] == "Yes") {
+                                // 小数点作品は含めるかどうか判定する
+                                $(this[0]["songs"]).each(function () {
+                                    if (isInclude == true) {
+                                        if ((this["not_bgm"] != "Yes" && this["dummy"] != "Yes") || (this["not_bgm"] == "Yes" && isOmitted != true)) {
+                                            aryQuiz.push({ answer: this["id"], answer_display: this["name"], game: this["game"] });
+                                            quiz_max += 1;
+                                        }
+                                    }
+                                })
+                            } else {
+                                // 整数作品はEDを入れる
+                                $(this[0]["songs"]).each(function () {
+                                    if ((this["not_bgm"] == "Yes" && isOmitted != true)) {
+                                        aryQuiz.push({ answer: this["id"], answer_display: this["name"], game: this["game"] });
+                                        quiz_max += 1;
+                                    }
+                                })
+                            }
+
+                        })
+
+                    })
+                    // 上の処理を待つ必要がある
+                    setTimeout(
+                        function () {
+                            if (quiz_max < quiz_fin_cnt) {
+                                quiz_fin_cnt = quiz_max;
+                            }
+                            quizReset();
+                            lock = 0;
+                        },
+                        "200"
+                    );
+                    var start = new Date();
+                    head = start.getTime()
+                });
 
 
 
-        $.getJSON("./data/song_list.json",function(data){
-            //quiz収納
-            $(data.alldata).each(function(){
-                if(this[0]["substream"]!="Yes"){
-                    $(this[0]["songs"]).each(function(){
-                        if(this["not_bgm"]!="Yes" && this["dummy"]!="Yes" ){
-                            aryQuiz.push({answer : this["id"],answer_display : this["name"] , game : this["game"] });
-                            quiz_max +=1;
+                $.getJSON("./data/song_list.json", function (data) {
+                    //quiz収納
+                    $(data.alldata).each(function () {
+                        if (this[0]["substream"] != "Yes") {
+                            $(this[0]["songs"]).each(function () {
+                                if (this["not_bgm"] != "Yes" && this["dummy"] != "Yes") {
+                                    aryQuiz.push({ answer: this["id"], answer_display: this["name"], game: this["game"] });
+                                    quiz_max += 1;
+                                }
+                            })
                         }
                     })
+                })
+
+
+                $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
+                    if (isInView) {
+                        $(this).stop().addClass('fd-done');
+                    } else {
+                        $(this).stop().removeClass('fd-done');
+                    }
+                });
+
+
+
+                //回答を選択した後の処理
+                $(document).on("click", "ul.ddmenu li ul li", function () {
+                    if (lock != 1) {
+                        // 覆いをかぶせる
+                        //quizArea.find('.quiz_area_bg').show();
+                        lock = 1
+                        //正解の回答を取得する
+                        var success = aryQuiz[quiz_cnt]['answer'];
+                        var correct_title = aryQuiz[quiz_cnt]['answer_display'];
+                        var correct_game = aryQuiz[quiz_cnt]['game'];
+
+                        // 正誤判定
+                        var duration = 1500;
+                        quizArea.find('.ans_area').show();
+                        if ($(this).attr("id") == success) {
+                            //正解の処理 〇を表示
+                            quizArea.find('.quiz_area_icon').addClass('true');
+                            //正解数をカウント
+                            quiz_success_cnt++;
+                        } else {
+                            //不正解の処理
+                            quizArea.find('.quiz_area_icon').addClass('false');
+                            duration = 3000;
+                        }
+                        quizArea.find('.ans_area').html("A. " + correct_title + " (" + correct_game + ")");
+
+
+
+                        setTimeout(function () {
+                            //表示を元に戻す
+                            quizArea.find('.quiz_ans_area ul li').removeClass('selected');
+                            quizArea.find('.quiz_area_icon').removeClass('true false');
+                            //quizArea.find('.quiz_area_bg').hide();
+                            quizArea.find('.ans_area').hide();
+                            //問題のカウントを進める
+                            quiz_cnt++;
+                            if (quiz_fin_cnt > quiz_cnt) {
+                                //次の問題を設定する
+                                quizShow();
+                            } else {
+                                //結果表示画面を表示
+                                quizResult();
+                            }
+                        }, duration);
+                    }
+                });
+
+                //もう一度挑戦するを押した時の処理
+                quizArea.on('click', '.quiz_restart', function () {
+                    quizReset();
+                });
+
+                //リセットを行う関数
+                function quizReset() {
+                    quizArea.html(quiz_html); //表示を元に戻す
+                    quiz_cnt = 0;
+                    quiz_success_cnt = 0;
+                    aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
+                    quizShow();
                 }
-            })
-        })
+
+                //問題を表示する関数
+                function quizShow() {
+
+                    //問題文を表示
+                    //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
+                    var _0x47b8 = ["\x61\x6E\x73\x77\x65\x72", "", "\x6A\x6F\x69\x6E", "\x72\x65\x76\x65\x72\x73\x65", "\x73\x70\x6C\x69\x74"]; var ans_id = aryQuiz[quiz_cnt][_0x47b8[0]]; var hidden = parseInt(ans_id + ans_id, 10).toString(16); var file_prefix = String(hidden)[_0x47b8[4]](_0x47b8[1])[_0x47b8[3]]()[_0x47b8[2]](_0x47b8[1])
+
+                    quizArea.find('.quiz_question').html('第' + (quiz_cnt + 1) + '問 (全' + quiz_fin_cnt + '問)    難易度：' + diff_name + ' <br><audio id="audio" name="sound" controls controlsList="nodownload"> <source src="mp3/' + rank + "/" + file_prefix + '.mp3" type="audio/wav"> </audio>');
+                    lock = 0;
+                }
+
+                //結果を表示する関数
+                function quizResult() {
+                    var stop = new Date();
+                    quizArea.find('.quiz_set').hide();
+                    var ms = stop.getTime() - head;
+                    var s = (ms / 1000).toFixed(1);
+                    var ps = (ms / quiz_fin_cnt / 1000).toFixed(1);
+
+                    $text = '難易度' + diff_name + 'で ' + quiz_fin_cnt + '問中 ' + quiz_success_cnt + '問正解！';
+                    if (quiz_fin_cnt === quiz_success_cnt) {
+                        $text += '<br>全問正解おめでとう！';
+                    }
+                    $text += '<br>解答時間' + s + '秒 1問あたり' + ps + '秒';
+                    $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズに挑戦しました！\n' + '難易度' + diff_name + 'で ' + quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n解答時間： ' + s + ' 秒\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
 
 
-    $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
-        if (isInView) {
-            $(this).stop().addClass('fd-done');
-        } else {
-            $(this).stop().removeClass('fd-done');
-        }
-    });
+                    $text += '<br><input type="button" value="もう一度挑戦する" class="quiz_restart">';
+                    quizArea.find('.quiz_result').html($text);
+                    quizArea.find('.quiz_result').show();
+                }
 
+                //配列をシャッフルする関数
+                function arrShuffle(arr) {
+                    for (i = arr.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var tmp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = tmp;
+                    }
+                    return arr;
+                }
+            });
 
+            // マウスが載ったらサブメニューを表示
+            $(document).on("click", "li.game", function () {
+                $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
+                $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
+            });
 
-    //回答を選択した後の処理
-    $(document).on("click","ul.ddmenu li ul li", function(){
-        if(lock!=1){
-            // 覆いをかぶせる
-            //quizArea.find('.quiz_area_bg').show();
-            lock=1
-            //正解の回答を取得する
-            var success = aryQuiz[quiz_cnt]['answer'];
-            var correct_title = aryQuiz[quiz_cnt]['answer_display'];
-            var correct_game = aryQuiz[quiz_cnt]['game'];
-
-            // 正誤判定
-            var duration=1500;
-            quizArea.find('.ans_area').show();
-            if($(this).attr("id")==success){
-                //正解の処理 〇を表示
-                quizArea.find('.quiz_area_icon').addClass('true');
-                //正解数をカウント
-                quiz_success_cnt++;
-            }else{
-                //不正解の処理
-                quizArea.find('.quiz_area_icon').addClass('false');
-                duration=3000;
+            if (event.keyCode == 32) {
+                $("audio").play();
             }
-            quizArea.find('.ans_area').html("A. "+correct_title+" ("+correct_game+")");
-
-
-
-            setTimeout(function(){
-            //表示を元に戻す
-            quizArea.find('.quiz_ans_area ul li').removeClass('selected');
-            quizArea.find('.quiz_area_icon').removeClass('true false');
-            //quizArea.find('.quiz_area_bg').hide();
-            quizArea.find('.ans_area').hide();
-            //問題のカウントを進める
-            quiz_cnt++;
-            if(quiz_fin_cnt > quiz_cnt){
-                //次の問題を設定する
-                quizShow();
-            }else{
-                //結果表示画面を表示
-                quizResult();
-            }
-        }, duration);
-        }
-    });
-
-    //もう一度挑戦するを押した時の処理
-    quizArea.on('click', '.quiz_restart', function(){
-        quizReset();
-    });
-
-    //リセットを行う関数
-    function quizReset(){
-        quizArea.html(quiz_html); //表示を元に戻す
-        quiz_cnt = 0;
-        quiz_success_cnt = 0;
-        aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
-        quizShow();
-    }
-
-    //問題を表示する関数
-    function quizShow(){
-
-        //問題文を表示
-        //quizArea.find('.quiz_question').html(aryQuiz[quiz_cnt]['question']);
-        var _0x47b8=["\x61\x6E\x73\x77\x65\x72","","\x6A\x6F\x69\x6E","\x72\x65\x76\x65\x72\x73\x65","\x73\x70\x6C\x69\x74"];var ans_id=aryQuiz[quiz_cnt][_0x47b8[0]];var hidden=parseInt(ans_id+ ans_id,10).toString(16);var file_prefix=String(hidden)[_0x47b8[4]](_0x47b8[1])[_0x47b8[3]]()[_0x47b8[2]](_0x47b8[1])
-
-        quizArea.find('.quiz_question').html('第'+(quiz_cnt + 1)+'問 (全'+quiz_fin_cnt+'問)    難易度：'+diff_name+' <br><audio id="audio" name="sound" controls controlsList="nodownload"> <source src="mp3/'+rank+"/"+file_prefix+'.mp3" type="audio/wav"> </audio>');
-        lock=0;
-    }
-
-    //結果を表示する関数
-    function quizResult(){
-        var stop = new Date();
-        quizArea.find('.quiz_set').hide();
-        var ms = stop.getTime() - head;
-        var s = (ms/1000).toFixed(1);
-        var ps = (ms/quiz_fin_cnt/1000).toFixed(1);
-
-        $text = '難易度'+diff_name+'で '+quiz_fin_cnt + '問中 ' + quiz_success_cnt + '問正解！';
-        if(quiz_fin_cnt === quiz_success_cnt){
-            $text += '<br>全問正解おめでとう！';
-        }
-        $text += '<br>解答時間'+s+ '秒 1問あたり' + ps + '秒';
-        $text += '<br><a href=\"https://twitter.com/share?ref_src=twsrc%5Etfw\" class=\"twitter-share-button\" data-size=\"large\" data-url=\"https://nerewid.github.io/introquiz.html\" data-hashtags=\"東方イントロクイズ\" data-text=\"東方イントロクイズに挑戦しました！\n'+'難易度'+diff_name+'で '+quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！\n解答時間： '+s+' 秒\n\" data-lang=\"ja\" data-show-count=\"false\" >Tweet</a><script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"><\/script>';
-
-
-        $text += '<br><input type="button" value="もう一度挑戦する" class="quiz_restart">';
-        quizArea.find('.quiz_result').html($text);
-        quizArea.find('.quiz_result').show();
-    }
-
-    //配列をシャッフルする関数
-    function arrShuffle(arr){
-        for(i = arr.length - 1; i > 0; i--){
-            var j = Math.floor(Math.random() * (i + 1));
-            var tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
-        }
-        return arr;
-    }
-    });
-
-    // マウスが載ったらサブメニューを表示
-    $(document).on("click","li.game", function(){
-        $(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
-        $(this).children().slideDown(150);     // 自分のサブメニューを表示する。
-    });
-</script>
-</body>
+        </script>
+    </body>
 
 </html>
